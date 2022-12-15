@@ -26,7 +26,7 @@ playbtn = Button(
     hoverColour=(255, 215, 0), # цвет кнопки при наведении
     pressedColour=(255, 255, 0), # цвет кнопки при нажатии
     radius=20, # скругление кнопки
-    onClick=lambda: print('Нажата кнопка играть') #функция когда кнопка нажата
+    onClick=lambda: playa() #функция когда кнопка нажата
 )
 
 settingsbtn = Button(
@@ -69,6 +69,14 @@ def exitt():
     settingsbtn.hide()
     playbtn.hide()
     import exapp
+    quit()
+
+def playa():
+    print("Нажата кнопка играть")
+    exitbtn.hide()
+    settingsbtn.hide()
+    playbtn.hide()
+    import main
     quit()
 
 class Eye:
