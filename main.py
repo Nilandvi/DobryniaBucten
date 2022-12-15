@@ -5,8 +5,8 @@ import os
 import random
 
 pygame.init()
-WIDTH = 1700
-HEIGHT = 900
+WIDTH = 1280
+HEIGHT = 680
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 sc = screen
@@ -15,7 +15,7 @@ circle_lst = []
 
 
 def load_image(name, colorkey=None):
-    fullname = os.path.join('data', name)
+    fullname = os.path.join('img', name)
     if not os.path.isfile(fullname):
         print(f"Файл с изображением '{fullname}' не найден")
         sys.exit()
@@ -75,7 +75,7 @@ class Board:
         pass
 
 
-board = Board(53, 28)
+board = Board(40, 21)
 running = True
 while running:
     sc.fill((0, 0, 0))
