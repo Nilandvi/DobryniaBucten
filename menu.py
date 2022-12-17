@@ -1,6 +1,5 @@
 import pygame
 from pygame.locals import *
-from pygame_widgets.button import Button
 import math
 import pygame_widgets
 from pygame_widgets.button import Button
@@ -76,7 +75,7 @@ def playa():
     exitbtn.hide()
     settingsbtn.hide()
     playbtn.hide()
-    import main
+    import start
     quit()
 
 class Eye:
