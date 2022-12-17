@@ -15,8 +15,6 @@ running = True
 while running:
     events = pygame.event.get()
     for event in events:
-        if count == 4:
-            import main
         if event.type == pygame.QUIT:
             pygame.quit()
             run = False
