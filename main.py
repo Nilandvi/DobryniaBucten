@@ -51,7 +51,7 @@ class Hodit(pygame.sprite.Sprite):
         self.image = dob
         self.rect = self.image.get_rect()
         self.rect.x = 640
-        self.rect.y = 340
+        self.rect.y = 140
 
     def update1(self):
         if pygame.sprite.spritecollideany(self, border1):
@@ -78,9 +78,7 @@ class Hodit(pygame.sprite.Sprite):
             return True
 
     def updatetrees(self):
-        if pygame.sprite.spritecollideany(self, tree_sprites):
-            pass
-
+        pass
 
 class Board:
     def __init__(self, width, height):
@@ -108,21 +106,18 @@ class Board:
             x = random.randint(2, 25)
             y = random.randint(9, 19)
             self.board[y][x] = 2
+            if self.board[y][x] == 2:
+                image = load_image('test_tree.png').convert_alpha()
+                tree = pygame.sprite.Sprite(tree_sprites)
+                tree.image = image
+                tree.rect = tree.image.get_rect()
+
+                tree.rect.x = 32 * (x - 1)
+                tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src):
-
         phone = load_image('test_grass.png').convert_alpha()
         src.blit(phone, (0, 0))
-        for i in range(self.height):
-            for j in range(self.width):
-                if self.board[i][j] == 2:
-                    image = load_image('test_tree.png').convert_alpha()
-                    tree = pygame.sprite.Sprite(tree_sprites)
-                    tree.image = image
-                    tree.rect = tree.image.get_rect()
-
-                    tree.rect.x = 32 * (j - 1)
-                    tree.rect.y = 32 * (i - 1)
 
 
 board = Board(40, 21)
@@ -141,7 +136,6 @@ flag3 = False
 flag4 = False
 
 while running:
-    sc.fill((0, 0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -195,10 +189,10 @@ while running:
     if flag4:
         if a.update4():
             a.rect.x += 20
-    screen.fill((0, 0, 0))
     board.rerender(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
+
     clock.tick(30)
 
     pg.display.update()
