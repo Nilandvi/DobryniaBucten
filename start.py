@@ -21,21 +21,12 @@ while running:
             pygame.quit()
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            pass
+            bg = pygame.image.load(frames[count])
+            count += 1
+            screen.blit(bg, (0, 0))
     if count == 6:
-
-        bg = pygame.image.load(frames[5])
-        screen.blit(bg, (0, 0))
-        pygame.time.wait(1500)
         import main
         running = False
-    try:
-        count += 1
-        bg = pygame.image.load(frames[count])
-        screen.blit(bg, (0, 0))
-        pygame.time.wait(1500)
-    except IndexError:
-        pass
 
     pygame.display.flip()
 pygame.quit()

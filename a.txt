@@ -1,0 +1,14 @@
+--Resourses
+Wood:
+1000
+Rock:
+50
+Clay:
+10
+--Tools
+Axe:
+0
+Showel:
+0
+Pickaxe:
+0
