@@ -4,6 +4,7 @@ import sys
 import os
 import random
 from pygame.locals import *
+from test_file import res_count
 
 flags = FULLSCREEN | DOUBLEBUF
 pygame.init()
@@ -192,6 +193,7 @@ while running:
     board.rerender(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
+    res_count(screen)
 
     clock.tick(30)
 

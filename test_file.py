@@ -2,15 +2,11 @@ import pygame
 from pygame.locals import *
 pygame.init()
 
-WIDTH, HEIGHT = size = 1280, 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-screen.fill((0,0,0))
-pygame.display.set_caption('Texture See Test')
-
 with open('a.txt') as fp:
     lines = fp.readlines()
 
-class ResCount():
+
+def res_count(screen):
     wood = pygame.image.load('data\\oak.png')
     rock = pygame.image.load('data\\rock.png')
     clay = pygame.image.load('data\\clay.png')
@@ -25,19 +21,3 @@ class ResCount():
     screen.blit(textr, (135, 5))
     screen.blit(textc, (235, 5))
 
-running = True
-while running:
-    events = pygame.event.get()
-    for event in events:
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            run = False
-            exit()
-        elif event.type == pygame.MOUSEBUTTONUP:
-            print(pygame.mouse.get_pos())
-
-    ##################################
-    pygame.display.update()
-    pygame.display.flip()
-
-pygame.quit()
