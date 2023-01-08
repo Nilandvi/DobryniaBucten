@@ -1,13 +1,13 @@
 --Resourses
 Wood:
-1000
+1228
 Rock:
 50
 Clay:
 10
 --Tools
 Axe:
-0
+1
 Showel:
 0
 Pickaxe:
