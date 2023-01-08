@@ -4,7 +4,7 @@ import sys
 import os
 import random
 from pygame.locals import *
-from test_file import res_count
+
 
 flags = FULLSCREEN | DOUBLEBUF
 pygame.init()
@@ -14,9 +14,24 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 sc = screen
 lstx = []
 lsty = []
-with open('a.txt') as fp:
+with open('a.txt') as fp2:
+    lines = fp2.readlines()
 
-    lines = fp.readlines()
+
+def res_count(screen, file):
+    wood = pygame.image.load('data\\oak.png')
+    rock = pygame.image.load('data\\rock.png')
+    clay = pygame.image.load('data\\clay.png')
+    screen.blit(wood, (0, 0))
+    screen.blit(rock, (100, 0))
+    screen.blit(clay, (200, 0))
+    font = pygame.font.Font(None, 40)
+    textw = font.render(file[2].strip(), True, (98, 99, 155))
+    textr = font.render(file[4].strip(), True, (98, 99, 155))
+    textc = font.render(file[6].strip(), True, (98, 99, 155))
+    screen.blit(textw, (35, 5))
+    screen.blit(textr, (135, 5))
+    screen.blit(textc, (235, 5))
 
 
 def load_image(name):
@@ -151,8 +166,6 @@ class Board:
                             with open('a.txt', 'w') as f:
                                 f.writelines(lines)
                                 f.close()
-                            res_count(screen)
-
                         else:
                             pass
 
@@ -203,7 +216,11 @@ while running:
             if event.key == pygame.K_d:
                 flag4 = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            b = board.rubit()
+            board.rubit()
+            with open('a.txt', 'r') as f:
+                l = f.readlines()
+                print(l[2])
+            res_count(screen, l)
 
     if flag1:
         if a.update2():
@@ -220,7 +237,7 @@ while running:
     board.rerender(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
-    res_count(screen)
+    res_count(screen, lines)
 
     clock.tick(30)
 
