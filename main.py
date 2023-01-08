@@ -4,7 +4,7 @@ import sys
 import os
 import random
 from pygame.locals import *
-
+import time
 
 flags = FULLSCREEN | DOUBLEBUF
 pygame.init()
@@ -13,6 +13,7 @@ HEIGHT = 680
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 sc = screen
 lstx = []
+index = 0
 lsty = []
 with open('a.txt') as fp2:
     lines = fp2.readlines()
@@ -49,6 +50,7 @@ border2 = pygame.sprite.Group()
 border3 = pygame.sprite.Group()
 border4 = pygame.sprite.Group()
 tree_sprites = pygame.sprite.Group()
+dobrinya = pygame.sprite.Group()
 
 
 class Border(pygame.sprite.Sprite):
@@ -66,8 +68,22 @@ class Border(pygame.sprite.Sprite):
 
 class Hodit(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__(all_sprites)
+        super().__init__(dobrinya)
         dob = load_image('test_dobryny.png').convert_alpha()
+        self.images = []
+        self.images.append(load_image('test_dobryny.png').convert_alpha())
+        self.images.append(load_image('dobryny_ass.png').convert_alpha())
+        self.images.append(load_image('dobryny_ass_left.png').convert_alpha())
+        self.images.append(load_image('dobryny_ass_right.png').convert_alpha())
+        self.images.append(load_image('test_dobryny.png').convert_alpha())
+        self.images.append(load_image('dobryny_before_left.png').convert_alpha())
+        self.images.append(load_image('dobryny_before_right.png').convert_alpha())
+        self.images.append(load_image('dobryny_side.png').convert_alpha())
+        self.images.append(load_image('dobryny_side_left.png').convert_alpha())
+        self.images.append(load_image('dobryny_side_right.png').convert_alpha())
+        self.images.append(load_image('dobryny_side1.png').convert_alpha())
+        self.images.append(load_image('dobryny_side1_left.png').convert_alpha())
+        self.images.append(load_image('dobryny_side1_right.png').convert_alpha())
         self.image = dob
         self.rect = self.image.get_rect()
         self.rect.x = 640
@@ -99,9 +115,10 @@ class Hodit(pygame.sprite.Sprite):
 
     def updatetrees(self):
         for i in tree_sprites.sprites():
-            if pygame.sprite.collide_mask(self, i):
+            if pygame.sprite.collide_rect(self, i):
                 return False
-        return True
+            else:
+                return True
 
 
 class Board:
@@ -127,15 +144,15 @@ class Board:
 
     def random_spawn_trees(self, n):
         for i in range(n):
-            x = random.randint(2, 32)
+            x = random.randint(2, 23)
             y = random.randint(9, 19)
             if x in lstx or x + 1 in lstx:
                 if y in lsty or y + 1 in lsty:
                     continue
             lstx.append(x)
             lsty.append(y)
-            self.board[y][x] = 9
-            if self.board[y][x] == 9:
+            self.board[y][x] = 10
+            if self.board[y][x] == 10:
                 image = load_image('test_tree.png').convert_alpha()
                 tree = pygame.sprite.Sprite(tree_sprites)
                 tree.image = image
@@ -149,6 +166,9 @@ class Board:
         src.blit(phone, (0, 0))
 
     def rubit(self):
+        for i in dobrinya.sprites():
+            xd = i.rect.x
+            yd = i.rect.y
         b = board.on_click(event.pos)
         x, y = b
         for i in lstx:
@@ -156,25 +176,30 @@ class Board:
                 if x == i and y == j:
                     if lines[9].strip() == "1":
                         self.board[y][x] -= 1
+                    elif lines[9].strip() == "2":
+                        self.board[y][x] -= 2
                 if self.board[y][x] == 0:
                     for i in tree_sprites.sprites():
                         if i.rect.x == 32 * (x - 1) and i.rect.y == 32 * (y - 1):
-                            i.kill()
-                            wod = int(lines[2])
-                            wod += random.randrange(10, 20)
-                            lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
-                            with open('a.txt', 'w') as f:
-                                f.writelines(lines)
-                                f.close()
-                        else:
-                            pass
+                            if i.rect.x // 32 + 1 == xd // 32 + 4 or i.rect.y // 32 + 1 == yd // 32 + 4 or \
+                                    i.rect.x // 32 + 1 == xd // 32 or i.rect.y // 32 + 1 == yd // 32:
+                                i.kill()
+                                wod = int(lines[2])
+                                wod += random.randrange(10, 20)
+                                lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
+                                with open('a.txt', 'w') as fi:
+                                    fi.writelines(lines)
+                                    fi.close()
 
 
 board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit()
+
 running = True
 board.random_spawn_trees(50)
+print(lstx)
+print(lsty)
 Border(3, 3, WIDTH - 3, 3, border1)
 Border(3, 203, 3, HEIGHT - 3, border2)
 Border(3, HEIGHT - 3, WIDTH - 3, HEIGHT - 3, border3)
@@ -184,8 +209,7 @@ flag1 = False
 flag2 = False
 flag3 = False
 flag4 = False
-print(lstx)
-print(lsty)
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -197,15 +221,19 @@ while running:
             if event.key == pygame.K_a:
                 if a.update2():
                     flag1 = True
+                    index = 7
             if event.key == pygame.K_s:
                 if a.update3():
                     flag2 = True
+                    index = 4
             if event.key == pygame.K_w:
                 if a.update1():
                     flag3 = True
+                    index = 1
             if event.key == pygame.K_d:
                 if a.update4():
                     flag4 = True
+                    index = 10
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 flag1 = False
@@ -219,24 +247,42 @@ while running:
             board.rubit()
             with open('a.txt', 'r') as f:
                 l = f.readlines()
-                print(l[2])
             res_count(screen, l)
 
     if flag1:
         if a.update2():
-            a.rect.x -= 15
+            a.rect.x -= 11
+            a.image = a.images[index]
+            index += 1
+            if index >= 9:
+                index = 7
     if flag2:
         if a.update3():
-            a.rect.y += 15
+            a.rect.y += 11
+            a.image = a.images[index]
+            index += 1
+            if index >= 6:
+                index = 4
     if flag3:
         if a.update1():
-            a.rect.y -= 15
+            a.rect.y -= 11
+
+            a.image = a.images[index]
+            index += 1
+            if index >= 3:
+                index = 1
+
     if flag4:
         if a.update4():
-            a.rect.x += 15
+            a.rect.x += 11
+            a.image = a.images[index]
+            index += 1
+            if index >= 12:
+                index = 10
     board.rerender(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
+    dobrinya.draw(screen)
     res_count(screen, lines)
 
     clock.tick(30)
