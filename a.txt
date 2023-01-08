@@ -1,6 +1,6 @@
 --Resourses
 Wood:
-1228
+1440
 Rock:
 50
 Clay:
