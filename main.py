@@ -12,7 +12,11 @@ WIDTH = 1280
 HEIGHT = 680
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 sc = screen
-circle_lst = []
+lstx = []
+lsty = []
+with open('a.txt') as fp:
+
+    lines = fp.readlines()
 
 
 def load_image(name):
@@ -79,7 +83,11 @@ class Hodit(pygame.sprite.Sprite):
             return True
 
     def updatetrees(self):
-        pass
+        for i in tree_sprites.sprites():
+            if pygame.sprite.collide_mask(self, i):
+                return False
+        return True
+
 
 class Board:
     def __init__(self, width, height):
@@ -102,12 +110,17 @@ class Board:
         if 0 <= x < self.width and 0 <= y < self.height:
             return x, y
 
-    def random_spawn_trees(self):
-        for i in range(40):
-            x = random.randint(2, 25)
+    def random_spawn_trees(self, n):
+        for i in range(n):
+            x = random.randint(2, 32)
             y = random.randint(9, 19)
-            self.board[y][x] = 2
-            if self.board[y][x] == 2:
+            if x in lstx or x + 1 in lstx:
+                if y in lsty or y + 1 in lsty:
+                    continue
+            lstx.append(x)
+            lsty.append(y)
+            self.board[y][x] = 9
+            if self.board[y][x] == 9:
                 image = load_image('test_tree.png').convert_alpha()
                 tree = pygame.sprite.Sprite(tree_sprites)
                 tree.image = image
@@ -120,12 +133,35 @@ class Board:
         phone = load_image('test_grass.png').convert_alpha()
         src.blit(phone, (0, 0))
 
+    def rubit(self):
+        b = board.on_click(event.pos)
+        x, y = b
+        for i in lstx:
+            for j in lsty:
+                if x == i and y == j:
+                    if lines[9].strip() == "1":
+                        self.board[y][x] -= 1
+                if self.board[y][x] == 0:
+                    for i in tree_sprites.sprites():
+                        if i.rect.x == 32 * (x - 1) and i.rect.y == 32 * (y - 1):
+                            i.kill()
+                            wod = int(lines[2])
+                            wod += random.randrange(10, 20)
+                            lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
+                            with open('a.txt', 'w') as f:
+                                f.writelines(lines)
+                                f.close()
+                            res_count(screen)
+
+                        else:
+                            pass
+
 
 board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit()
 running = True
-board.random_spawn_trees()
+board.random_spawn_trees(50)
 Border(3, 3, WIDTH - 3, 3, border1)
 Border(3, 203, 3, HEIGHT - 3, border2)
 Border(3, HEIGHT - 3, WIDTH - 3, HEIGHT - 3, border3)
@@ -135,7 +171,8 @@ flag1 = False
 flag2 = False
 flag3 = False
 flag4 = False
-
+print(lstx)
+print(lsty)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -147,23 +184,15 @@ while running:
             if event.key == pygame.K_a:
                 if a.update2():
                     flag1 = True
-                else:
-                    flag1 = False
             if event.key == pygame.K_s:
                 if a.update3():
                     flag2 = True
-                else:
-                    flag2 = False
             if event.key == pygame.K_w:
                 if a.update1():
                     flag3 = True
-                else:
-                    flag3 = False
             if event.key == pygame.K_d:
                 if a.update4():
                     flag4 = True
-                else:
-                    flag4 = False
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 flag1 = False
@@ -173,23 +202,21 @@ while running:
                 flag3 = False
             if event.key == pygame.K_d:
                 flag4 = False
-        elif event.type == pygame.MOUSEBUTTONUP:
-            pass
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            b = board.on_click(event.pos)
+            b = board.rubit()
 
     if flag1:
         if a.update2():
-            a.rect.x -= 20
+            a.rect.x -= 15
     if flag2:
         if a.update3():
-            a.rect.y += 20
+            a.rect.y += 15
     if flag3:
         if a.update1():
-            a.rect.y -= 20
+            a.rect.y -= 15
     if flag4:
         if a.update4():
-            a.rect.x += 20
+            a.rect.x += 15
     board.rerender(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
