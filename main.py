@@ -15,6 +15,7 @@ sc = screen
 lstx = []
 index = 0
 lsty = []
+m = 0
 with open('a.txt') as fp2:
     lines = fp2.readlines()
 
@@ -113,6 +114,19 @@ class Hodit(pygame.sprite.Sprite):
         else:
             return True
 
+    def update5(self):
+        if pygame.sprite.spritecollideany(self, border4):
+            return False
+        else:
+            return True
+
+    def update6(self):
+        if pygame.sprite.spritecollideany(self, border4):
+            return False
+        else:
+            return True
+
+
 class Board:
     def __init__(self, width, height):
         self.width = width
@@ -208,6 +222,8 @@ flag1 = False
 flag2 = False
 flag3 = False
 flag4 = False
+spin = False
+shiz = False
 
 while running:
     for event in pygame.event.get():
@@ -237,6 +253,16 @@ while running:
                     flag4 = True
                     index = 10
 
+            if event.key == pygame.K_e:
+                if a.update5():
+                    spin = True
+                    index = 0
+
+            if event.key == pygame.K_q:
+                if a.update6():
+                    shiz = True
+                    index = 0
+
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 flag1 = False
@@ -246,6 +272,10 @@ while running:
                 flag3 = False
             if event.key == pygame.K_d:
                 flag4 = False
+            if event.key == pygame.K_e:
+                spin = False
+            if event.key == pygame.K_q:
+                shiz = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             board.f += 1
             board.rubit()
@@ -253,6 +283,31 @@ while running:
                 l = f.readlines()
             res_count(screen, l)
             print(event.pos)
+    if spin:
+        if a.update5():
+            a.image = a.images[index]
+            dis = pg.image.load('data\\dislike.png')
+            dis_rect = dis.get_rect(bottomright=((a.rect.x + 80), (a.rect.y + 15)))
+            sc.blit(dis, dis_rect)
+            pg.display.update()
+            index += 1
+            if index >= 12:
+                index = 0
+    if shiz:
+        if a.update6():
+            a.image = a.images[index]
+            imgs = ["data\\m1.png", "data\\m2.png", "data\\m3.png", "data\\m4.png"]
+            m += 1
+            dis = pg.image.load(imgs[m])
+            dis_rect = dis.get_rect(bottomright=((a.rect.x + 40), (a.rect.y + 15)))
+            sc.blit(dis, dis_rect)
+            pg.display.update()
+            index += 1
+            if index >= 12:
+                index = 0
+            if m >= 3:
+                m = 0
+
 
     if flag1:
         if a.update2():
