@@ -14,7 +14,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 sc = screen
 lstx = []
 index = 0
-m = 0
 lsty = []
 with open('a.txt') as fp2:
     lines = fp2.readlines()
@@ -113,26 +112,6 @@ class Hodit(pygame.sprite.Sprite):
             return False
         else:
             return True
-    
-    def update5(self):
-        if pygame.sprite.spritecollideany(self, border4):
-            return False
-        else:
-            return True
-
-    def update6(self):
-        if pygame.sprite.spritecollideany(self, border4):
-            return False
-        else:
-            return True
-
-    def updatetrees(self):
-        for i in tree_sprites.sprites():
-            if pygame.sprite.collide_rect(self, i):
-                return False
-            else:
-                return True
-
 
 class Board:
     def __init__(self, width, height):
@@ -142,6 +121,7 @@ class Board:
         self.left = 0
         self.top = 0
         self.cell_size = 32
+        self.f = 0
 
     def set_view(self, left, top, cell_size):
         self.left = left
@@ -159,14 +139,14 @@ class Board:
         for i in range(n):
             x = random.randint(2, 23)
             y = random.randint(9, 19)
-            if x in lstx or x + 1 in lstx:
-                if y in lsty or y + 1 in lsty:
+            if x in lstx or x + 1 in lstx or x + 2 in lstx or x + 3 in lstx:
+                if y in lsty or y + 1 in lsty or y + 2 in lsty or y + 3 in lsty or y + 4 in lsty:
                     continue
             lstx.append(x)
             lsty.append(y)
             self.board[y][x] = 10
             if self.board[y][x] == 10:
-                image = load_image('test_tree.png').convert_alpha()
+                image = load_image('test__tree2.png').convert_alpha()
                 tree = pygame.sprite.Sprite(tree_sprites)
                 tree.image = image
                 tree.rect = tree.image.get_rect()
@@ -175,7 +155,7 @@ class Board:
                 tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src):
-        phone = load_image('test_grass.png').convert_alpha()
+        phone = load_image('test_grass5.png').convert_alpha()
         src.blit(phone, (0, 0))
 
     def rubit(self):
@@ -188,14 +168,20 @@ class Board:
             for j in lsty:
                 if x == i and y == j:
                     if lines[9].strip() == "1":
-                        self.board[y][x] -= 1
+                        self.f += 1
                     elif lines[9].strip() == "2":
-                        self.board[y][x] -= 2
-                if self.board[y][x] == 0:
+                        self.f += 2
+                if self.f == 6:
+                    self.f = 0
                     for i in tree_sprites.sprites():
-                        if i.rect.x == 32 * (x - 1) and i.rect.y == 32 * (y - 1):
-                            if i.rect.x // 32 + 1 == xd // 32 + 4 or i.rect.y // 32 + 1 == yd // 32 + 4 or \
-                                    i.rect.x // 32 + 1 == xd // 32 or i.rect.y // 32 + 1 == yd // 32:
+                        ix = i.rect.x // 32 + 1
+                        iy = i.rect.y // 32 + 1
+                        if i.rect.x == 32 * (x - 1) and i.rect.y == 32 * (y - 2):
+                            if ix == xd // 32 + 1 or ix == xd // 32 + 2 or ix == xd // 32 + 3 or ix == xd // 32 - 1 or \
+                                    ix == xd // 32 - 2 or ix == xd // 32 - 3 or ix == xd // 32 + 2 or \
+                                    iy == yd // 32 + 1 or iy == yd // 32 + 2 or \
+                                    iy == yd // 32 - 1 or iy == yd // 32 - 2 or iy == yd // 32 - 3 or \
+                                    iy == yd // 32 + 2:
                                 i.kill()
                                 wod = int(lines[2])
                                 wod += random.randrange(10, 20)
@@ -222,8 +208,6 @@ flag1 = False
 flag2 = False
 flag3 = False
 flag4 = False
-spin = False
-shiz = False
 
 while running:
     for event in pygame.event.get():
@@ -237,26 +221,22 @@ while running:
                 if a.update2():
                     flag1 = True
                     index = 7
+
             if event.key == pygame.K_s:
                 if a.update3():
                     flag2 = True
                     index = 4
+
             if event.key == pygame.K_w:
                 if a.update1():
                     flag3 = True
                     index = 1
+
             if event.key == pygame.K_d:
                 if a.update4():
                     flag4 = True
                     index = 10
-            if event.key == pygame.K_e:
-                if a.update5():
-                    spin = True
-                    index = 0
-            if event.key == pygame.K_q:
-                if a.update6():
-                    shiz = True
-                    index = 0
+
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 flag1 = False
@@ -266,79 +246,51 @@ while running:
                 flag3 = False
             if event.key == pygame.K_d:
                 flag4 = False
-            if event.key == pygame.K_e:
-                spin = False
-            if event.key == pygame.K_q:
-                shiz = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            board.f += 1
             board.rubit()
             with open('a.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
-
-    if spin:
-        if a.update5():
-            a.image = a.images[index]
-            dis = pg.image.load('data\\dislike.png')
-            dis_rect = dis.get_rect(bottomright=((a.rect.x + 80), (a.rect.y + 15)))
-            sc.blit(dis, dis_rect)
-            pg.display.update()
-            index += 1
-            if index >= 12:
-                index = 0
-    if shiz:
-        if a.update6():
-            a.image = a.images[index]
-            imgs = ["data\\m1.png", "data\\m2.png", "data\\m3.png", "data\\m4.png"]
-            m += 1
-            dis = pg.image.load(imgs[m])
-            dis_rect = dis.get_rect(bottomright=((a.rect.x + 40), (a.rect.y + 15)))
-            sc.blit(dis, dis_rect)
-            pg.display.update()
-            index += 1
-            if index >= 12:
-                index = 0
-            if m >= 3:
-                m = 0
-
-            
+            print(event.pos)
 
     if flag1:
         if a.update2():
             a.rect.x -= 11
-            a.image = a.images[index]
-            index += 1
-            if index >= 9:
-                index = 7
+        a.image = a.images[index]
+        index += 1
+        if index >= 9:
+            index = 7
     if flag2:
         if a.update3():
             a.rect.y += 11
-            a.image = a.images[index]
-            index += 1
-            if index >= 6:
-                index = 4
+        a.image = a.images[index]
+        index += 1
+        if index >= 6:
+            index = 4
     if flag3:
         if a.update1():
             a.rect.y -= 11
 
-            a.image = a.images[index]
-            index += 1
-            if index >= 3:
-                index = 1
+        a.image = a.images[index]
+        index += 1
+        if index >= 3:
+            index = 1
 
     if flag4:
         if a.update4():
             a.rect.x += 11
-            a.image = a.images[index]
-            index += 1
-            if index >= 12:
-                index = 10
+        a.image = a.images[index]
+        index += 1
+        if index >= 12:
+            index = 10
     board.rerender(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
     res_count(screen, lines)
-
+    if a.rect.x <= 80 and a.rect.y <= 121:
+        print('уходим')
     clock.tick(30)
 
     pg.display.update()
