@@ -16,6 +16,7 @@ lstx = []
 index = 0
 lsty = []
 m = 0
+otkuda_prishel = 0
 with open('a.txt') as fp2:
     lines = fp2.readlines()
 
@@ -258,6 +259,15 @@ flag3 = False
 flag4 = False
 spin = False
 shiz = False
+if otkuda_prishel == 0:
+    a.rect.x = 640
+    a.rect.y = 140
+if otkuda_prishel == 1:
+    a.rect.x = 90
+    a.rect.y = 130
+if otkuda_prishel == 2:
+    a.rect.x = 1220
+    a.rect.y = 100
 
 while running:
     for event in pygame.event.get():
@@ -386,9 +396,13 @@ while running:
     dobrinya.draw(screen)
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
-        print('уходим')
+        otkuda_prishel = 1
+        pygame.quit()
+        import main_cave
     if a.rect.x >= 1230 and a.rect.y <= 121:
-        print('уходим')
+        otkuda_prishel = 2
+        pygame.quit()
+        import main_beach
     clock.tick(30)
 
     pg.display.update()
