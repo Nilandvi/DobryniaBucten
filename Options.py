@@ -29,6 +29,7 @@ unicodect1.topright = [150, 59]
 screen.blit(bg, (0, 0))
 screen.blit(display_text, unicodect)
 screen.blit(display_text3, unicodect3)
+clock = pygame.time.Clock()
 
 
 text = pygame.transform.flip(display_text1, True, False)
@@ -162,7 +163,6 @@ def skala():
         display_text1 = font.render(stik[10], True, (0, 0, 0))
     unicodect1 = display_text1.get_rect()
     unicodect1.topright = [150, 59]
-    screen.blit(bg, (0, 0))
     screen.blit(display_text, unicodect)
     text = pygame.transform.flip(display_text1, True, False)
     screen.blit(text, (70, 59))
@@ -204,7 +204,6 @@ while running:
         else:
             sun_surf = pygame.image.load('img\\dobr.png')
             # он больше не пищит
-            screen.blit(sun_surf, (x, y, 32, 32))
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             moving = False
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -212,9 +211,13 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 click.play()
-        screen.blit(sun_surf, (x, y, 32, 32))
-        pygame.display.flip()
-
-
+    
+    screen.blit(bg, (0, 0))
+    screen.blit(display_text, unicodect)
+    text = pygame.transform.flip(display_text1, True, False)
+    screen.blit(text, (70, 59))
+    screen.blit(display_text3, unicodect3)
+    screen.blit(sun_surf, (x, y))
     pygame_widgets.update(pygame.event.get())
     pygame.display.update()
+    clock.tick(60)
