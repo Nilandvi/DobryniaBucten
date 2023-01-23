@@ -52,11 +52,12 @@ border3 = pygame.sprite.Group()
 border4 = pygame.sprite.Group()
 tree_sprites = pygame.sprite.Group()
 dobrinya = pygame.sprite.Group()
+b = pygame.sprite.Group()
 
 
 class Border(pygame.sprite.Sprite):
     def __init__(self, x1, y1, x2, y2, name):
-        super().__init__(all_sprites)
+        super().__init__(b)
         if x1 == x2:
             self.add(name)
             self.image = pygame.Surface([1, y2 - y1])
@@ -126,6 +127,36 @@ class Hodit(pygame.sprite.Sprite):
         else:
             return True
 
+    def pupa(self):
+        for x in range(len(lstx)):
+            a = self.rect.x // 32 + 3
+            b = self.rect.y // 32 + 4
+            if a == lstx[x] + 2 and b == lsty[x] + 3 or a == lstx[x] + 3 and b == lsty[x] + 2 or \
+                    a == lstx[x] + 3 and b == lsty[x] + 1:
+                self.rect.x += 11
+
+    def pupa2(self):
+        for x in range(len(lstx)):
+            a = self.rect.x // 32 + 2
+            b = self.rect.y // 32 + 3
+            if a == lstx[x] and b == lsty[x] or a == lstx[x] + 1 and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
+                self.rect.y -= 11
+
+    def pupa3(self):
+        for x in range(len(lstx)):
+            a = self.rect.x // 32 + 1
+            b = self.rect.y // 32 + 1
+            if a == lstx[x] and b == lsty[x] or a == lstx[x] - 2 and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
+                self.rect.y += 11
+
+    def pupa4(self):
+        for x in range(len(lstx)):
+            a = self.rect.x // 32 + 1
+            b = self.rect.y // 32 + 1
+            if a == lstx[x] - 1 and b == lsty[x] or a == lstx[x] - 2 and b == lsty[x] - 1 or \
+                    a == lstx[x] - 2 and b == lsty[x] - 2:
+                self.rect.x -= 11
+
 
 class Board:
     def __init__(self, width, height):
@@ -151,13 +182,13 @@ class Board:
 
     def random_spawn_trees(self, n):
         for i in range(n):
-            x = random.randint(2, 23)
-            y = random.randint(9, 19)
+            x = random.randint(2, 30)
+            y = random.randint(9, 17)
             if x in lstx or x + 1 in lstx or x + 2 in lstx or x + 3 in lstx:
                 if y in lsty or y + 1 in lsty or y + 2 in lsty or y + 3 in lsty or y + 4 in lsty:
                     continue
-            lstx.append(x)
-            lsty.append(y)
+            lstx.append(x + 1)
+            lsty.append(y + 1)
             self.board[y][x] = 10
             if self.board[y][x] == 10:
                 image = load_image('test__tree2.png').convert_alpha()
@@ -169,40 +200,43 @@ class Board:
                 tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src):
-        phone = load_image('test_grass5.png').convert_alpha()
+        phone = load_image('test_grass4.png').convert_alpha()
         src.blit(phone, (0, 0))
 
     def rubit(self):
+        self.aa = 0
+        self.a = 0
         for i in dobrinya.sprites():
             xd = i.rect.x
             yd = i.rect.y
         b = board.on_click(event.pos)
         x, y = b
-        for i in lstx:
-            for j in lsty:
-                if x == i and y == j:
+        for i in range(len(lstx)):
+            for j in range(len(lsty)):
+                if x == lstx[i] and y == lsty[j]:
                     if lines[9].strip() == "1":
                         self.f += 1
-                    elif lines[9].strip() == "2":
-                        self.f += 2
-                if self.f == 6:
-                    self.f = 0
-                    for i in tree_sprites.sprites():
-                        ix = i.rect.x // 32 + 1
-                        iy = i.rect.y // 32 + 1
-                        if i.rect.x == 32 * (x - 1) and i.rect.y == 32 * (y - 2):
-                            if ix == xd // 32 + 1 or ix == xd // 32 + 2 or ix == xd // 32 + 3 or ix == xd // 32 - 1 or \
-                                    ix == xd // 32 - 2 or ix == xd // 32 - 3 or ix == xd // 32 + 2 or \
-                                    iy == yd // 32 + 1 or iy == yd // 32 + 2 or \
-                                    iy == yd // 32 - 1 or iy == yd // 32 - 2 or iy == yd // 32 - 3 or \
-                                    iy == yd // 32 + 2:
-                                i.kill()
-                                wod = int(lines[2])
-                                wod += random.randrange(10, 20)
-                                lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
-                                with open('a.txt', 'w') as fi:
-                                    fi.writelines(lines)
-                                    fi.close()
+                        self.aa = i
+                        self.a = j
+                        break
+        if self.f == 6:
+            self.f = 0
+            for sp in tree_sprites.sprites():
+                ix = sp.rect.x // 32 + 1
+                iy = sp.rect.y // 32 + 1
+                if sp.rect.x == 32 * (x - 1) and sp.rect.y == 32 * (y - 2):
+                    if (ix == xd // 32 + 1 or ix == xd // 32 + 2 or ix == xd // 32 + 3 or
+                        ix == xd // 32 - 1 or ix == xd // 32 - 2 or ix == xd // 32 - 3 or ix == xd // 32 + 2) \
+                            and (iy == yd // 32 or iy == yd // 32 - 1):
+                        sp.kill()
+                        lstx.remove(ix + 1)
+                        lsty.remove(iy + 1)
+                        wod = int(lines[2])
+                        wod += random.randrange(10, 20)
+                        lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
+                        with open('a.txt', 'w') as fi:
+                            fi.writelines(lines)
+                            fi.close()
 
 
 board = Board(40, 21)
@@ -213,10 +247,10 @@ running = True
 board.random_spawn_trees(50)
 print(lstx)
 print(lsty)
-Border(3, 3, WIDTH - 3, 3, border1)
-Border(3, 203, 3, HEIGHT - 3, border2)
-Border(3, HEIGHT - 3, WIDTH - 3, HEIGHT - 3, border3)
-Border(WIDTH - 3, 203, WIDTH - 3, HEIGHT - 3, border4)
+Border(1, 1, WIDTH - 1, 1, border1)
+Border(9, 203, 9, HEIGHT - 3, border2)
+Border(3, HEIGHT - 53, WIDTH - 3, HEIGHT - 3, border3)
+Border(WIDTH - 9, 143, WIDTH - 9, HEIGHT - 3, border4)
 pg.display.flip()
 flag1 = False
 flag2 = False
@@ -235,21 +269,25 @@ while running:
 
             if event.key == pygame.K_a:
                 if a.update2():
+                    a.pupa()
                     flag1 = True
                     index = 7
 
             if event.key == pygame.K_s:
                 if a.update3():
+                    a.pupa2()
                     flag2 = True
                     index = 4
 
             if event.key == pygame.K_w:
                 if a.update1():
+                    a.pupa3()
                     flag3 = True
                     index = 1
 
             if event.key == pygame.K_d:
                 if a.update4():
+                    a.pupa4()
                     flag4 = True
                     index = 10
 
@@ -282,7 +320,7 @@ while running:
             with open('a.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
-            print(event.pos)
+
     if spin:
         if a.update5():
             a.image = a.images[index]
@@ -308,9 +346,9 @@ while running:
             if m >= 3:
                 m = 0
 
-
     if flag1:
         if a.update2():
+            a.pupa()
             a.rect.x -= 11
         a.image = a.images[index]
         index += 1
@@ -318,6 +356,7 @@ while running:
             index = 7
     if flag2:
         if a.update3():
+            a.pupa2()
             a.rect.y += 11
         a.image = a.images[index]
         index += 1
@@ -325,6 +364,7 @@ while running:
             index = 4
     if flag3:
         if a.update1():
+            a.pupa3()
             a.rect.y -= 11
 
         a.image = a.images[index]
@@ -334,6 +374,7 @@ while running:
 
     if flag4:
         if a.update4():
+            a.pupa4()
             a.rect.x += 11
         a.image = a.images[index]
         index += 1
@@ -345,6 +386,8 @@ while running:
     dobrinya.draw(screen)
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
+        print('уходим')
+    if a.rect.x >= 1230 and a.rect.y <= 121:
         print('уходим')
     clock.tick(30)
 

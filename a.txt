@@ -1,10 +1,10 @@
 --Resourses
 Wood:
-1440
+1466
 Rock:
 50
 Clay:
-10
+148
 --Tools
 Axe:
 1
