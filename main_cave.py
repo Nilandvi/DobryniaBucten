@@ -5,8 +5,6 @@ import os
 import random
 from pygame.locals import *
 import time
-from home import Home
-from home import home
 from load_image import load_image
 
 flags = FULLSCREEN | DOUBLEBUF
@@ -44,6 +42,8 @@ border1 = pygame.sprite.Group()
 border2 = pygame.sprite.Group()
 border3 = pygame.sprite.Group()
 border4 = pygame.sprite.Group()
+border5 = pygame.sprite.Group()
+border6 = pygame.sprite.Group()
 tree_sprites = pygame.sprite.Group()
 dobrinya = pygame.sprite.Group()
 b = pygame.sprite.Group()
@@ -62,7 +62,7 @@ class Border(pygame.sprite.Sprite):
             self.rect = pygame.Rect(x1, y1, x2 - x1, 1)
 
 
-class Hodit(pygame.sprite.Sprite):
+class Hoditt(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__(dobrinya)
         dob = load_image('test_dobryny.png').convert_alpha()
@@ -82,8 +82,8 @@ class Hodit(pygame.sprite.Sprite):
         self.images.append(load_image('dobryny_side1_right.png').convert_alpha())
         self.image = dob
         self.rect = self.image.get_rect()
-        self.rect.x = 534
-        self.rect.y = 160
+        self.rect.x = WIDTH - 140
+        self.rect.y = 60
 
     def update1(self):
         if pygame.sprite.spritecollideany(self, border1):
@@ -110,45 +110,43 @@ class Hodit(pygame.sprite.Sprite):
             return True
 
     def update5(self):
-        if pygame.sprite.spritecollideany(self, border4):
+        if pygame.sprite.spritecollideany(self, border5):
             return False
         else:
             return True
 
     def update6(self):
-        if pygame.sprite.spritecollideany(self, border4):
+        if pygame.sprite.spritecollideany(self, border6):
             return False
         else:
             return True
 
     def pupa(self):
         for x in range(len(lstx)):
-            a = self.rect.x // 32 + 3
-            b = self.rect.y // 32 + 4
-            if a == lstx[x] + 2 and b == lsty[x] + 3 or a == lstx[x] + 3 and b == lsty[x] + 2 or \
-                    a == lstx[x] + 3 and b == lsty[x] + 1:
+            a = self.rect.x // 32 + 2
+            b = self.rect.y // 32 + 2
+            if a == lstx[x] and b == lsty[x]:
                 self.rect.x += 11
 
     def pupa2(self):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 2
             b = self.rect.y // 32 + 3
-            if a == lstx[x] and b == lsty[x] or a == lstx[x] + 1 and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
+            if a == lstx[x] and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
                 self.rect.y -= 11
 
     def pupa3(self):
         for x in range(len(lstx)):
-            a = self.rect.x // 32 + 1
-            b = self.rect.y // 32 + 1
-            if a == lstx[x] and b == lsty[x] or a == lstx[x] - 2 and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
+            a = self.rect.x // 32 + 2
+            b = self.rect.y // 32 + 2
+            if a == lstx[x] and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
                 self.rect.y += 11
 
     def pupa4(self):
         for x in range(len(lstx)):
-            a = self.rect.x // 32 + 1
-            b = self.rect.y // 32 + 1
-            if a == lstx[x] - 1 and b == lsty[x] or a == lstx[x] - 2 and b == lsty[x] - 1 or \
-                    a == lstx[x] - 2 and b == lsty[x] - 2:
+            a = self.rect.x // 32 + 3
+            b = self.rect.y // 32 + 3
+            if a == lstx[x] and b == lsty[x] + 1:
                 self.rect.x -= 11
 
 
@@ -176,7 +174,7 @@ class Board:
 
     def random_spawn_trees(self, n):
         for i in range(n):
-            x = random.randint(2, 30)
+            x = random.randint(2, 35)
             y = random.randint(9, 17)
             if x in lstx or x + 1 in lstx or x + 2 in lstx or x + 3 in lstx:
                 if y in lsty or y + 1 in lsty or y + 2 in lsty or y + 3 in lsty or y + 4 in lsty:
@@ -185,7 +183,7 @@ class Board:
             lsty.append(y + 1)
             self.board[y][x] = 10
             if self.board[y][x] == 10:
-                image = load_image('test__tree2.png').convert_alpha()
+                image = load_image('rock_.png').convert_alpha()
                 tree = pygame.sprite.Sprite(tree_sprites)
                 tree.image = image
                 tree.rect = tree.image.get_rect()
@@ -194,7 +192,7 @@ class Board:
                 tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src):
-        phone = load_image('test_grass4.png').convert_alpha()
+        phone = load_image('cave.png').convert_alpha()
         src.blit(phone, (0, 0))
 
     def rubit(self):
@@ -210,24 +208,31 @@ class Board:
                 if x == lstx[i] and y == lsty[j]:
                     if lines[9].strip() == "1":
                         self.f += 1
-                        self.aa = i
-                        self.a = j
                         break
         if self.f == 6:
             self.f = 0
             for sp in tree_sprites.sprites():
                 ix = sp.rect.x // 32 + 1
                 iy = sp.rect.y // 32 + 1
-                if sp.rect.x == 32 * (x - 1) and sp.rect.y == 32 * (y - 2):
-                    if (ix == xd // 32 + 1 or ix == xd // 32 + 2 or ix == xd // 32 + 3 or
-                        ix == xd // 32 - 1 or ix == xd // 32 - 2 or ix == xd // 32 - 3 or ix == xd // 32 + 2) \
-                            and (iy == yd // 32 or iy == yd // 32 - 1):
+                print(ix + 1, iy + 1)
+                print(xd // 32 + 3)
+                print(yd // 32 + 2)
+
+                if ix + 1 == x + 2 and iy + 1 == y + 2:
+                    if (ix + 1 == xd // 32 + 3 or ix + 1 == xd // 32 or ix + 1 == xd // 32 + 2 or
+                        ix + 1 == xd // 32 + 4 or ix + 1 == xd // 32 + 1) and \
+                            (iy + 1 == yd // 32 + 3 or iy + 1 == yd // 32 + 2 or iy + 1 == yd // 32 or
+                             iy + 1 == yd // 32 + 1):
                         sp.kill()
+                        print(ix)
+                        print(iy)
                         lstx.remove(ix + 1)
                         lsty.remove(iy + 1)
-                        wod = int(lines[2])
+                        print(lstx)
+                        print(lsty)
+                        wod = int(lines[4])
                         wod += random.randrange(10, 20)
-                        lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
+                        lines[4] = lines[4].replace(lines[4], str(wod) + '\n')
                         with open('a.txt', 'w') as fi:
                             fi.writelines(lines)
                             fi.close()
@@ -235,15 +240,17 @@ class Board:
 
 board = Board(40, 21)
 clock = pygame.time.Clock()
-a = Hodit()
-h = Home()
+a = Hoditt()
+
 running = True
 board.random_spawn_trees(50)
-
-Border(1, 1, WIDTH - 1, 1, border1)
-Border(9, 203, 9, HEIGHT - 3, border2)
-Border(3, HEIGHT - 53, WIDTH - 3, HEIGHT - 3, border3)
-Border(WIDTH - 9, 143, WIDTH - 9, HEIGHT - 3, border4)
+print(lstx)
+print(lsty)
+Border(1, 70, WIDTH - 160, 70, border1)
+Border(WIDTH - 75, 70, WIDTH - 3, 70, border1)
+Border(40, 3, 40, HEIGHT - 3, border2)
+Border(3, HEIGHT - 3, WIDTH - 3, HEIGHT - 3, border3)
+Border(WIDTH - 40, 3, WIDTH - 40, HEIGHT - 3, border4)
 pg.display.flip()
 flag1 = False
 flag2 = False
@@ -377,15 +384,11 @@ while running:
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
-    home.draw(screen)
-
     res_count(screen, lines)
-    if a.rect.x <= 80 and a.rect.y <= 121:
+
+    if a.rect.x >= WIDTH - 140 and a.rect.y <= 40:
         pygame.quit()
-        import main_cave
-    elif a.rect.x >= 1230 and a.rect.y <= 121:
-        pygame.quit()
-        import main_beach
+        import main
     else:
         clock.tick(30)
         pg.display.update()
