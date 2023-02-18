@@ -2,7 +2,7 @@
 Wood:
 1499
 Rock:
-165
+221
 Clay:
 186
 --Tools
