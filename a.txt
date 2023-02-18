@@ -2,9 +2,9 @@
 Wood:
 1499
 Rock:
-50
+165
 Clay:
-160
+186
 --Tools
 Axe:
 1

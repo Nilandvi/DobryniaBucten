@@ -73,22 +73,24 @@ class Border(pygame.sprite.Sprite):
 class Hodit(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__(dobrinya)
-        dob = load_image('test_dobryny.png').convert_alpha()
+        image_paths = ['test_dobryny.png',
+                       'dobryny_ass.png',
+                       'dobryny_ass_left.png',
+                       'dobryny_ass_right.png',
+                       'dobryny_before_left.png',
+                       'dobryny_before_right.png',
+                       'dobryny_side.png',
+                       'dobryny_side_left.png',
+                       'dobryny_side_right.png',
+                       'dobryny_side1.png',
+                       'dobryny_side1_left.png',
+                       'dobryny_side1_right.png']
+
         self.images = []
-        self.images.append(load_image('test_dobryny.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass_right.png').convert_alpha())
-        self.images.append(load_image('test_dobryny.png').convert_alpha())
-        self.images.append(load_image('dobryny_before_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_before_right.png').convert_alpha())
-        self.images.append(load_image('dobryny_side.png').convert_alpha())
-        self.images.append(load_image('dobryny_side_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_side_right.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1_right.png').convert_alpha())
-        self.image = dob
+        for path in image_paths:
+            image = load_image(path).convert_alpha()
+            self.images.append(image)
+        self.image = self.images[0]
         self.rect = self.image.get_rect()
         self.rect.x = 110
         self.rect.y = 10

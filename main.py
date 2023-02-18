@@ -5,6 +5,9 @@ import os
 import random
 from pygame.locals import *
 import time
+from home import Home
+from home import home
+from load_image import load_image
 
 flags = FULLSCREEN | DOUBLEBUF
 pygame.init()
@@ -16,7 +19,6 @@ lstx = []
 index = 0
 lsty = []
 m = 0
-otkuda_prishel = 0
 with open('a.txt') as fp2:
     lines = fp2.readlines()
 
@@ -35,15 +37,6 @@ def res_count(screen, file):
     screen.blit(textw, (35, 5))
     screen.blit(textr, (135, 5))
     screen.blit(textc, (235, 5))
-
-
-def load_image(name):
-    fullname = os.path.join('data', name)
-    if not os.path.isfile(fullname):
-        print(f"Файл с изображением '{fullname}' не найден")
-        sys.exit()
-    image = pygame.image.load(fullname)
-    return image
 
 
 all_sprites = pygame.sprite.Group()
@@ -89,8 +82,8 @@ class Hodit(pygame.sprite.Sprite):
         self.images.append(load_image('dobryny_side1_right.png').convert_alpha())
         self.image = dob
         self.rect = self.image.get_rect()
-        self.rect.x = 640
-        self.rect.y = 140
+        self.rect.x = 534
+        self.rect.y = 160
 
     def update1(self):
         if pygame.sprite.spritecollideany(self, border1):
@@ -243,11 +236,10 @@ class Board:
 board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit()
-
+h = Home()
 running = True
 board.random_spawn_trees(50)
-print(lstx)
-print(lsty)
+
 Border(1, 1, WIDTH - 1, 1, border1)
 Border(9, 203, 9, HEIGHT - 3, border2)
 Border(3, HEIGHT - 53, WIDTH - 3, HEIGHT - 3, border3)
@@ -259,15 +251,6 @@ flag3 = False
 flag4 = False
 spin = False
 shiz = False
-if otkuda_prishel == 0:
-    a.rect.x = 640
-    a.rect.y = 140
-if otkuda_prishel == 1:
-    a.rect.x = 90
-    a.rect.y = 130
-if otkuda_prishel == 2:
-    a.rect.x = 1220
-    a.rect.y = 100
 
 while running:
     for event in pygame.event.get():
@@ -394,15 +377,15 @@ while running:
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
+    home.draw(screen)
+
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
-        otkuda_prishel = 1
         pygame.quit()
         import main_cave
-    if a.rect.x >= 1230 and a.rect.y <= 121:
-        otkuda_prishel = 2
+    elif a.rect.x >= 1230 and a.rect.y <= 121:
         pygame.quit()
         import main_beach
-    clock.tick(30)
-
-    pg.display.update()
+    else:
+        clock.tick(30)
+        pg.display.update()
