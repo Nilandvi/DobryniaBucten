@@ -197,9 +197,6 @@ class Board:
             for sp in tree_sprites.sprites():
                 ix = sp.rect.x // 32 + 1
                 iy = sp.rect.y // 32 + 1
-                print(ix + 1, iy + 1)
-                print(xd // 32 + 3)
-                print(yd // 32 + 2)
 
                 if ix + 1 == x + 2 and iy + 1 == y + 2:
                     if (ix + 1 == xd // 32 + 3 or ix + 1 == xd // 32 or ix + 1 == xd // 32 + 2 or
@@ -207,12 +204,8 @@ class Board:
                             (iy + 1 == yd // 32 + 3 or iy + 1 == yd // 32 + 2 or iy + 1 == yd // 32 or
                              iy + 1 == yd // 32 + 1):
                         sp.kill()
-                        print(ix)
-                        print(iy)
                         lstx.remove(ix + 1)
                         lsty.remove(iy + 1)
-                        print(lstx)
-                        print(lsty)
                         wod = int(lines[6])
                         wod += random.randrange(10, 20)
                         lines[6] = lines[6].replace(lines[6], str(wod) + '\n')
@@ -227,8 +220,6 @@ a = Hodit()
 
 running = True
 board.random_spawn_trees(50)
-print(lstx)
-print(lsty)
 Border(1, 1, WIDTH - 1, 1, border1)
 Border(9, 90, 9, HEIGHT - 3, border2)
 Border(3, HEIGHT - 200, WIDTH - 390, HEIGHT - 200, border3)
@@ -372,6 +363,6 @@ while running:
     if a.rect.x <= 80 and a.rect.y <= 40:
         pygame.quit()
         import main
-    clock.tick(30)
-
-    pg.display.update()
+    else:
+        clock.tick(30)
+        pg.display.update()
