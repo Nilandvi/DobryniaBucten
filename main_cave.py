@@ -1,41 +1,11 @@
-import pygame
-import pygame as pg
-import sys
-import os
-import random
-from pygame.locals import *
-import time
+from settings import *
+from res import *
 from load_image import load_image
 
-flags = FULLSCREEN | DOUBLEBUF
-pygame.init()
-WIDTH = 1280
-HEIGHT = 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-sc = screen
 lstx = []
 index = 0
 lsty = []
 m = 0
-with open('a.txt') as fp2:
-    lines = fp2.readlines()
-
-
-def res_count(screen, file):
-    wood = pygame.image.load('data\\oak.png')
-    rock = pygame.image.load('data\\rock.png')
-    clay = pygame.image.load('data\\clay.png')
-    screen.blit(wood, (0, 0))
-    screen.blit(rock, (100, 0))
-    screen.blit(clay, (200, 0))
-    font = pygame.font.Font(None, 40)
-    textw = font.render(file[2].strip(), True, (98, 99, 155))
-    textr = font.render(file[4].strip(), True, (98, 99, 155))
-    textc = font.render(file[6].strip(), True, (98, 99, 155))
-    screen.blit(textw, (35, 5))
-    screen.blit(textr, (135, 5))
-    screen.blit(textc, (235, 5))
-
 
 all_sprites = pygame.sprite.Group()
 border1 = pygame.sprite.Group()
