@@ -298,7 +298,7 @@ while running:
     if shiz:
         if a.update6():
             a.image = a.images[index]
-            imgs = ["data\\m1.png", "data\\m2.png", "data\\m3.png", "data\\m4.png"]
+            imgs = ["data\\m1.pneeg", "data\\m2.png", "data\\m3.png", "data\\m4.png"]
             m += 1
             dis = pg.image.load(imgs[m])
             dis_rect = dis.get_rect(bottomright=((a.rect.x + 40), (a.rect.y + 15)))

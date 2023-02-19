@@ -18,7 +18,7 @@ volume_rect = volume_text.get_rect(center=(200, 85))
 volume_slider = Slider(screen, 150, 150, 100, 30, min=0, max=10, step=1)
 
 # загружаем музыкальный файл
-pygame.mixer.music.load("music.ogg")
+pygame.mixer.music.load("sounds\\music.ogg")
 
 # создаем кнопки управления музыкой
 play_button = Button(screen, 100, 250, 75, 25, text="Воспроизвести",
