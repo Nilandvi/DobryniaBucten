@@ -4,6 +4,7 @@ from pygame import *
 import sys
 import os
 import random
+import math
 from pygame.locals import *
 import time
 import pygame_widgets
@@ -19,3 +20,6 @@ WIDTH, HEIGHT = width, height = w, h = 1280, 640
 screen = sc = pygame.display.set_mode((WIDTH, HEIGHT))
 
 cell_x = cell_y = cell = 32
+
+with open('base.txt') as fp2:
+    lines = fp2.readlines()

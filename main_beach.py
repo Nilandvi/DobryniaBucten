@@ -1,49 +1,11 @@
-import pygame
-import pygame as pg
-import sys
-import os
-import random
-from pygame.locals import *
-import time
+from load_image import *
+from settings import *
+from res import *
 
-flags = FULLSCREEN | DOUBLEBUF
-pygame.init()
-WIDTH = 1280
-HEIGHT = 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-sc = screen
 lstx = []
 index = 0
 lsty = []
 m = 0
-with open('a.txt') as fp2:
-    lines = fp2.readlines()
-
-
-def res_count(screen, file):
-    wood = pygame.image.load('data\\oak.png')
-    rock = pygame.image.load('data\\rock.png')
-    clay = pygame.image.load('data\\clay.png')
-    screen.blit(wood, (0, 0))
-    screen.blit(rock, (100, 0))
-    screen.blit(clay, (200, 0))
-    font = pygame.font.Font(None, 40)
-    textw = font.render(file[2].strip(), True, (98, 99, 155))
-    textr = font.render(file[4].strip(), True, (98, 99, 155))
-    textc = font.render(file[6].strip(), True, (98, 99, 155))
-    screen.blit(textw, (35, 5))
-    screen.blit(textr, (135, 5))
-    screen.blit(textc, (235, 5))
-
-
-def load_image(name):
-    fullname = os.path.join('data', name)
-    if not os.path.isfile(fullname):
-        print(f"Файл с изображением '{fullname}' не найден")
-        sys.exit()
-    image = pygame.image.load(fullname)
-    return image
-
 
 all_sprites = pygame.sprite.Group()
 border1 = pygame.sprite.Group()
@@ -88,7 +50,7 @@ class Hodit(pygame.sprite.Sprite):
 
         self.images = []
         for path in image_paths:
-            image = load_image(path).convert_alpha()
+            image = load_image_data(path).convert_alpha()
             self.images.append(image)
         self.image = self.images[0]
         self.rect = self.image.get_rect()
@@ -166,7 +128,7 @@ class Board:
             lsty.append(y + 1)
             self.board[y][x] = 10
             if self.board[y][x] == 10:
-                image = load_image('clay_test2.png').convert_alpha()
+                image = load_image_icons('clay_test2.png').convert_alpha()
                 tree = pygame.sprite.Sprite(tree_sprites)
                 tree.image = image
                 tree.rect = tree.image.get_rect()
@@ -175,7 +137,7 @@ class Board:
                 tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src):
-        phone = load_image('test_beach1.png').convert_alpha()
+        phone = load_image_location('test_beach1.png').convert_alpha()
         src.blit(phone, (0, 0))
 
     def rubit(self):

@@ -1,42 +1,13 @@
-import pygame
-import pygame as pg
-import sys
-import os
-import random
-from pygame.locals import *
-import time
+from settings import *
+from res import *
+from load_image import *
 from home import Home
 from home import home
-from load_image import load_image
 
-flags = FULLSCREEN | DOUBLEBUF
-pygame.init()
-WIDTH = 1280
-HEIGHT = 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-sc = screen
 lstx = []
 index = 0
 lsty = []
 m = 0
-with open('a.txt') as fp2:
-    lines = fp2.readlines()
-
-
-def res_count(screen, file):
-    wood = pygame.image.load('data\\oak.png')
-    rock = pygame.image.load('data\\rock.png')
-    clay = pygame.image.load('data\\clay.png')
-    screen.blit(wood, (0, 0))
-    screen.blit(rock, (100, 0))
-    screen.blit(clay, (200, 0))
-    font = pygame.font.Font(None, 40)
-    textw = font.render(file[2].strip(), True, (98, 99, 155))
-    textr = font.render(file[4].strip(), True, (98, 99, 155))
-    textc = font.render(file[6].strip(), True, (98, 99, 155))
-    screen.blit(textw, (35, 5))
-    screen.blit(textr, (135, 5))
-    screen.blit(textc, (235, 5))
 
 
 all_sprites = pygame.sprite.Group()
@@ -65,21 +36,21 @@ class Border(pygame.sprite.Sprite):
 class Hodit(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__(dobrinya)
-        dob = load_image('test_dobryny.png').convert_alpha()
+        dob = load_image_data('test_dobryny.png').convert_alpha()
         self.images = []
-        self.images.append(load_image('test_dobryny.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass_right.png').convert_alpha())
-        self.images.append(load_image('test_dobryny.png').convert_alpha())
-        self.images.append(load_image('dobryny_before_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_before_right.png').convert_alpha())
-        self.images.append(load_image('dobryny_side.png').convert_alpha())
-        self.images.append(load_image('dobryny_side_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_side_right.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1_right.png').convert_alpha())
+        self.images.append(load_image_data('test_dobryny.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_ass.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_ass_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_ass_right.png').convert_alpha())
+        self.images.append(load_image_data('test_dobryny.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_before_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_before_right.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side_right.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side1.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side1_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side1_right.png').convert_alpha())
         self.image = dob
         self.rect = self.image.get_rect()
         self.rect.x = 534
@@ -185,7 +156,7 @@ class Board:
             lsty.append(y + 1)
             self.board[y][x] = 10
             if self.board[y][x] == 10:
-                image = load_image('test__tree2.png').convert_alpha()
+                image = load_image_icons('test__tree2.png').convert_alpha()
                 tree = pygame.sprite.Sprite(tree_sprites)
                 tree.image = image
                 tree.rect = tree.image.get_rect()
@@ -194,7 +165,7 @@ class Board:
                 tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src):
-        phone = load_image('test_grass4.png').convert_alpha()
+        phone = load_image_location('test_grass4.png').convert_alpha()
         src.blit(phone, (0, 0))
 
     def rubit(self):

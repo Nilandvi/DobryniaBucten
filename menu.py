@@ -1,12 +1,5 @@
-import pygame
-from pygame.locals import *
-import math
-import pygame_widgets
-from pygame_widgets.button import Button
+from settings import *
 
-pygame.init()
-WIDTH, HEIGHT = size = 1280, 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
 bg = pygame.image.load("img\\menu.png")
 screen.blit(bg, (0, 0))
 pygame.display.set_caption('Dobrynia Bucten')

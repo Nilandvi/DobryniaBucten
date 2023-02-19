@@ -1,6 +1,7 @@
 from settings import *
 from design import *
-pygame.init()
+
+
 bg = pygame.image.load("menu.png")
 screen.blit(bg, (0, 0))
 outputs = [output, output1, output2, output3, output4, output5]
