@@ -11,16 +11,25 @@ musics = ["sche.wav", "dwij.wav"]
 click = pygame.mixer.Sound(musics[0])
 wake = pygame.mixer.Sound(musics[1])
 
-x = 0.5
+zvukmus = 0.5
 pygame.mixer.music.load('data\\music.mp3')
 pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(x)
+pygame.mixer.music.set_volume(zvukmus)
 wake.set_volume(volumes)
 font = pygame.font.SysFont('Montserrat', 40)
 
 display_text2 = font.render("|||||", True, (0, 0, 0))
 unicodect2 = display_text2.get_rect()
 unicodect2.topright = [150, 150]
+text = pygame.transform.flip(display_text2, True, False)
+
+
+
+display_text1 = font.render("|||||", True, (0, 0, 0))
+unicodect1 = display_text1.get_rect()
+unicodect1.topright = [150, 59]
+text1 = pygame.transform.flip(display_text1, True, False)
+screen.blit(text1, (70, 59))
 
 
 valm2 = Button(
@@ -86,33 +95,23 @@ def valusplu():
 
 
 def skalas():
+    global display_text2
     print(volumes)
-    stik = ["*", "|", "||", "|||", "||||", "|||||", "||||||", "|||||||", "||||||||", "|||||||||", "||||||||||"]
-    if volumes < 0.09:
-        print("*")
-        display_text2 = font.render(stik[0], True, (0, 0, 0))
-    elif volumes >= 0.1 and volumes < 0.19:
-        display_text2 = font.render(stik[1], True, (0, 0, 0))
-    elif volumes >= 0.1 and volumes < 0.29:
-        display_text2 = font.render(stik[2], True, (0, 0, 0))
-    elif volumes >= 0.2 and volumes <= 0.39:
-        display_text2 = font.render(stik[3], True, (0, 0, 0))
-    elif volumes >= 0.3 and volumes <= 0.49:
-        display_text2 = font.render(stik[4], True, (0, 0, 0))
-    elif volumes >= 0.4 and volumes <= 0.59:
-        display_text2 = font.render(stik[5], True, (0, 0, 0))
-    elif volumes >= 0.5 and volumes <= 0.69:
-        display_text2 = font.render(stik[6], True, (0, 0, 0))
-    elif volumes >= 0.6 and volumes <= 0.79:
-        display_text2 = font.render(stik[7], True, (0, 0, 0))
-    elif volumes >= 0.7 and volumes <= 0.89:
-        display_text2 = font.render(stik[8], True, (0, 0, 0))
-    elif volumes >= 0.8 and volumes <= 0.99:
-        display_text2 = font.render(stik[9], True, (0, 0, 0))
-    elif volumes >= 0.9 and volumes <= 1.99:
-        display_text2 = font.render(stik[10], True, (0, 0, 0))
-    unicodect2 = display_text2.get_rect()
-    unicodect2.topright = [150, 59]
-    screen.blit(display_text2, unicodect2)
-    text = pygame.transform.flip(display_text2, True, False)
-    screen.blit(text, (70, 59))
+    stik1 = ["*", "|", "||", "|||", "||||", "|||||", "||||||", "|||||||", "||||||||", "|||||||||", "||||||||||"]
+    symbol_map1 = {
+        (0, 0.09): stik1[0],
+        (0.09, 0.19): stik1[1],
+        (0.19, 0.29): stik1[2],
+        (0.29, 0.39): stik1[3],
+        (0.39, 0.49): stik1[4],
+        (0.49, 0.59): stik1[5],
+        (0.59, 0.69): stik1[6],
+        (0.69, 0.79): stik1[7],
+        (0.79, 0.89): stik1[8],
+        (0.89, 2.0): stik1[9],
+    }
+    for range1_, symbol1 in symbol_map1.items():
+        if range1_[0] <= zvukmus <= range1_[1]:
+            display_text2 = font.render(symbol1, True, (0, 0, 0))
+            break
+    unicodect2.topright = [150, 159]
