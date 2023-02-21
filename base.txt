@@ -7,5 +7,27 @@ Clay:
 186
 Money:
 0
---Tools
 
+--Events
+Cutscene:
+No
+Bar lvl:
+0
+BoostGirs:
+No
+
+--Static
+Objects:
+0
+Wood:
+0
+Rock:
+0
+Clay:
+0
+Money:
+0
+Distance:
+0
+Coctails:
+0
