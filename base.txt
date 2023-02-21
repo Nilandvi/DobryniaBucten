@@ -5,10 +5,7 @@ Rock:
 330
 Clay:
 186
+Money:
+0
 --Tools
-Axe:
-1
-Showel:
-0
-Pickaxe:
-0
+

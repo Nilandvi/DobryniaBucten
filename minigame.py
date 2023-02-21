@@ -2,7 +2,7 @@ from settings import *
 from design import *
 
 
-bg = pygame.image.load("menu.png")
+bg = pygame.image.load("locations\\bar_counter.png")
 screen.blit(bg, (0, 0))
 outputs = [output, output1, output2, output3, output4, output5]
 sliders = [slider, slider1, slider2, slider3, slider4, slider5]
