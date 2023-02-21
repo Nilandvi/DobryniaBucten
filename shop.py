@@ -13,11 +13,14 @@ pygame.mixer.music.load("sounds\\voice_sans.mp3")
 # Определение текста и его позиций
 messages = [
     "Добро пожаловать в Bucten shop!",
-    f"У тебя на счету {lines[10].strip()} монеток!",
+    f"У тебя на счету {lines[8].strip()} монеток!",
     "Желаешь что нибудь Продать, а может прикупить?",
 ]
 x = 20
 y = 500
+
+
+girs = "Asd"
 
 while messages:
     message = messages.pop(0)
@@ -46,5 +49,30 @@ while True:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONUP:
-            res_count(screen, lines)
+            print(pygame.mouse.get_pos())
+        #elif event.type == pygame.MOUSEMOTION:
     
+    if 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+        pygame.draw.rect(screen, BLACK, (523, 224, 64, 64))
+        pygame.draw.rect(screen, BLACK, (940, 0, 340, 350))
+        screen.blit(font.render("Информация", True, (0, 250, 154)), (1050, 20))
+        #цикл для вывода нужных ресурсов и их стоимости из БД
+    else: 
+        pygame.draw.rect(screen, WHITE, (523, 224, 64, 64))
+
+    pygame.display.update()
+    screen.blit(bg, (0, 0))
+
+
+
+
+
+
+
+
+
+
+
+
+#(522, 278)
+#(744, 278)
