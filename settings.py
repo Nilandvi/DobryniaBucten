@@ -13,7 +13,6 @@ from pygame_widgets.textbox import TextBox
 from pygame_widgets.button import Button
 
 
-
 pygame.init()
 MOVE_SPEED = 5
 WIDTH, HEIGHT = width, height = w, h = 1280, 640 
