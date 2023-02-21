@@ -1,12 +1,20 @@
-from settings import *
-from load_image import *
+import pygame
+import pygame as pg
+import sys
+import os
+import random
+from pygame.locals import *
+import time
+from load_image_loc import load_image
 
+pygame.init()
 home = pygame.sprite.Group()
+
 
 class Home(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__(home)
-        dob = load_image_icons('test_home1.png').convert_alpha()
+        dob = load_image('test_home1.png').convert_alpha()
         self.images = []
         self.image = dob
         self.rect = self.image.get_rect()
