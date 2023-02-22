@@ -194,8 +194,9 @@ while running:
     dobrinya.draw(screen)
     res_count(screen, lines)
 
-    if a.rect.x >= WIDTH - 140 and a.rect.y <= 40:
-        sys.exit()
+    if a.rect.x >= WIDTH - 140 and a.rect.y <= 50:
+        os.system('start main.py')
+        exit()
     else:
         clock.tick(30)
         pg.display.update()

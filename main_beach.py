@@ -195,6 +195,7 @@ while running:
     dobrinya.draw(screen)
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 40:
+        os.system('start main.py')
         sys.exit()
     else:
         clock.tick(30)

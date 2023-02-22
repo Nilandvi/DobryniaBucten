@@ -1,15 +1,17 @@
 import pygame
 import pygame as pg
 import sys
+import os
 from pygame.locals import *
 from home import Home
 from home import home
 from dobrynia import Hodit
 from res_count import res_count
 from Boardd import Board
+from button import Buttn
+from button import buttn
 
-if not pygame.get_init():
-    pygame.init()
+pygame.init()
 flags = FULLSCREEN | DOUBLEBUF
 WIDTH = 1280
 HEIGHT = 680
@@ -49,6 +51,7 @@ board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
 h = Home()
+k = Buttn()
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
 
@@ -186,18 +189,20 @@ while running:
         if index >= 12:
             index = 10
     board.rerender(screen, 'test_grass4.png')
+    buttn.draw(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
     home.draw(screen)
-
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
-        import main_cave
-        break
+        os.system('start main_cave.py')
+        exit()
     elif a.rect.x >= 1230 and a.rect.y <= 121:
         import main_beach
-        break
+        sys.exit()
+    elif a.rect.x >= 1280 - 100 and a.rect.y >= 680 - 128:
+        board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
     else:
         clock.tick(30)
         pg.display.update()
