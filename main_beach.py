@@ -1,27 +1,14 @@
-import pygame
-import pygame as pg
-import sys
-import os
-import random
-from pygame.locals import *
-import time
+from settings import *
 from dobrynia import Hodit
 from res_count import res_count
-from load_image_loc import load_image
+from load_image import *
 from Boardd import Board
 
-pygame.init()
-flags = FULLSCREEN | DOUBLEBUF
-WIDTH = 1280
-HEIGHT = 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-sc = screen
 lstx = []
 index = 0
 lsty = []
 m = 0
-with open('a.txt') as fp2:
-    lines = fp2.readlines()
+
 
 all_sprites = pygame.sprite.Group()
 border1 = pygame.sprite.Group()

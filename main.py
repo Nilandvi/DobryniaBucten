@@ -1,30 +1,20 @@
-import pygame
-import pygame as pg
-import sys
-import os
-from pygame.locals import *
+from settings import *
+from res import *
+from load_image import *
 from home import Home
 from home import home
 from dobrynia import Hodit
-from res_count import res_count
+from res_count import *
 from Boardd import Board
 from button import Buttn
 from button import buttn
 
-pygame.init()
-flags = FULLSCREEN | DOUBLEBUF
-WIDTH = 1280
-HEIGHT = 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-sc = screen
 lstx = []
 index = 0
 lsty = []
 m = 0
-with open('a.txt') as fp2:
-    lines = fp2.readlines()
 
-all_sprites = pygame.sprite.Group()
+all_spites = pygame.sprite.Group()
 border1 = pygame.sprite.Group()
 border2 = pygame.sprite.Group()
 border3 = pygame.sprite.Group()
