@@ -1,10 +1,14 @@
 from settings import *
 from res import *
+from shopinfotable import InfoTable
+from load_image import *
 
 # Определение цветов
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 bg = pygame.image.load("locations\\shop.png")
+
+
 screen.blit(bg, (0, 0))
 pygame.draw.rect(screen, BLACK, (0, 490, 800, 680))
 # Настройка шрифта
@@ -18,9 +22,6 @@ messages = [
 ]
 x = 20
 y = 500
-
-
-girs = "Asd"
 
 while messages:
     message = messages.pop(0)
@@ -40,10 +41,11 @@ while messages:
     # Перейти на новую строку
     y += font.size(line)[1]
     pygame.display.update()
-    time.sleep(1)
+    time.sleep(0.01)
 
 # Основной игровой цикл
 while True:
+    res_count(screen, lines)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -53,12 +55,15 @@ while True:
         #elif event.type == pygame.MOUSEMOTION:
     
     if 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
-        pygame.draw.rect(screen, BLACK, (523, 224, 64, 64))
+        table = InfoTable("barup")
+        abup = pygame.image.load("shop\\a_bar.png")
+        screen.blit(abup, (523, 224))
         pygame.draw.rect(screen, BLACK, (940, 0, 340, 350))
-        screen.blit(font.render("Информация", True, (0, 250, 154)), (1050, 20))
+        table.draw()
         #цикл для вывода нужных ресурсов и их стоимости из БД
     else: 
-        pygame.draw.rect(screen, WHITE, (523, 224, 64, 64))
+        bup = pygame.image.load("shop\\bar.png")
+        screen.blit(bup, (523, 224))
 
     pygame.display.update()
     screen.blit(bg, (0, 0))
