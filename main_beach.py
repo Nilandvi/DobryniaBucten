@@ -1,6 +1,6 @@
 from settings import *
 from dobrynia import Hodit
-from res_count import res_count
+from res import *
 from load_image import *
 from Boardd import Board
 
@@ -117,10 +117,10 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             board.f += 1
             board.rubit(dobrinya, lstx, lsty, tree_sprites, lines, event.pos, 1)
-            with open('a.txt', 'r') as f:
+            with open('base.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
-
+aaaa
     if spin:
         if a.update5(border4):
             a.image = a.images[index]

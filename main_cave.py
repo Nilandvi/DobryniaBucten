@@ -1,27 +1,13 @@
-import pygame
-import pygame as pg
-import sys
-import os
-import random
-from pygame.locals import *
-import time
-from load_image_loc import load_image
+from settings import *
+from load_image import *
 from dobrynia import Hodit
 from Boardd import Board
-from res_count import res_count
+from res import *
 
-pygame.init()
-flags = FULLSCREEN | DOUBLEBUF
-WIDTH = 1280
-HEIGHT = 680
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-sc = screen
 lstx = []
 index = 0
 lsty = []
 m = 0
-with open('a.txt') as fp2:
-    lines = fp2.readlines()
 
 all_sprites = pygame.sprite.Group()
 border1 = pygame.sprite.Group()
@@ -125,7 +111,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             board.f += 1
             board.rubit(dobrinya, lstx, lsty, tree_sprites, lines, event.pos, 2)
-            with open('a.txt', 'r') as f:
+            with open('base.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
 

@@ -1,5 +1,5 @@
 import pygame
-from load_image_loc import load_image
+from load_image import *
 
 lstx = []
 index = 0
@@ -10,21 +10,21 @@ lsty = []
 class Hodit(pygame.sprite.Sprite):
     def __init__(self, dobr):
         super().__init__(dobr)
-        dob = load_image('test_dobryny.png').convert_alpha()
+        dob = load_image_data('test_dobryny.png').convert_alpha()
         self.images = []
-        self.images.append(load_image('test_dobryny.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_ass_right.png').convert_alpha())
-        self.images.append(load_image('test_dobryny.png').convert_alpha())
-        self.images.append(load_image('dobryny_before_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_before_right.png').convert_alpha())
-        self.images.append(load_image('dobryny_side.png').convert_alpha())
-        self.images.append(load_image('dobryny_side_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_side_right.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1_left.png').convert_alpha())
-        self.images.append(load_image('dobryny_side1_right.png').convert_alpha())
+        self.images.append(load_image_data('test_dobryny.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_ass.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_ass_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_ass_right.png').convert_alpha())
+        self.images.append(load_image_data('test_dobryny.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_before_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_before_right.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side_right.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side1.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side1_left.png').convert_alpha())
+        self.images.append(load_image_data('dobryny_side1_right.png').convert_alpha())
         self.image = dob
         self.rect = self.image.get_rect()
         self.rect.x = 534

@@ -15,7 +15,7 @@ from pygame_widgets.button import Button
 
 pygame.init()
 MOVE_SPEED = 5
-WIDTH, HEIGHT = width, height = w, h = 1280, 640 
+WIDTH, HEIGHT = width, height = w, h = 1280, 680 
 screen = sc = pygame.display.set_mode((WIDTH, HEIGHT))
 
 cell_x = cell_y = cell = 32

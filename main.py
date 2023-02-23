@@ -4,7 +4,7 @@ from load_image import *
 from home import Home
 from home import home
 from dobrynia import Hodit
-from res_count import *
+from res import *
 from Boardd import Board
 from button import Buttn
 from button import buttn
@@ -14,7 +14,7 @@ index = 0
 lsty = []
 m = 0
 
-all_spites = pygame.sprite.Group()
+all_sprites = pygame.sprite.Group()
 border1 = pygame.sprite.Group()
 border2 = pygame.sprite.Group()
 border3 = pygame.sprite.Group()
@@ -115,14 +115,14 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             board.f += 1
             board.rubit(dobrinya, lstx, lsty, tree_sprites, lines, event.pos, 0)
-            with open('a.txt', 'r') as f:
+            with open('base.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
 
     if spin:
         if a.update5(border4):
             a.image = a.images[index]
-            dis = pg.image.load('data\\dislike.png')
+            dis = pg.image.load('icons\\dislike.png')
             dis_rect = dis.get_rect(bottomright=((a.rect.x + 80), (a.rect.y + 15)))
             sc.blit(dis, dis_rect)
             pg.display.update()

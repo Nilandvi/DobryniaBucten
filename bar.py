@@ -3,6 +3,7 @@ from maps import bar
 from character import *
 from ban import *
 bg = pygame.image.load("locations\\bar.png")
+screen = sc = pygame.display.set_mode((1280, 640))
 screen.blit(bg, (0, 0))
 entities = pygame.sprite.Group() # Все объекты
 platforms = [] # то, во что мы будем врезаться или опираться

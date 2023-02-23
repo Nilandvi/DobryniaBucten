@@ -1,7 +1,7 @@
 import pygame
 import random
-from load_image_loc import load_image
-from res_count import res_count
+from load_image import *
+from res import *
 
 class Board:
     def __init__(self, width, height):
@@ -36,7 +36,7 @@ class Board:
             lsty.append(y + 1)
             self.board[y][x] = 10
             if self.board[y][x] == 10:
-                image = load_image(name).convert_alpha()
+                image = load_image_icons(name).convert_alpha()
                 tree = pygame.sprite.Sprite(sprites)
                 tree.image = image
                 tree.rect = tree.image.get_rect()
@@ -45,7 +45,7 @@ class Board:
                 tree.rect.y = 32 * (y - 1)
 
     def rerender(self, src, name):
-        phone = load_image(name).convert_alpha()
+        phone = load_image_location(name).convert_alpha()
         src.blit(phone, (0, 0))
 
     def rubit(self, dobrinya, lstx, lsty, tree_sprites, lines, event, flag):
@@ -80,7 +80,7 @@ class Board:
                             wod = int(lines[2])
                             wod += random.randrange(10, 20)
                             lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
-                            with open('a.txt', 'w') as fi:
+                            with open('base.txt', 'w') as fi:
                                 fi.writelines(lines)
                                 fi.close()
                 if flag == 1:
@@ -97,7 +97,7 @@ class Board:
                                     wod = int(lines[6])
                                     wod += random.randrange(10, 20)
                                     lines[6] = lines[6].replace(lines[6], str(wod) + '\n')
-                                    with open('a.txt', 'w') as fi:
+                                    with open('base.txt', 'w') as fi:
                                         fi.writelines(lines)
                                         fi.close()
                 if flag == 2:
@@ -114,7 +114,7 @@ class Board:
                             wod = int(lines[4])
                             wod += random.randrange(10, 20)
                             lines[4] = lines[4].replace(lines[4], str(wod) + '\n')
-                            with open('a.txt', 'w') as fi:
+                            with open('base.txt', 'w') as fi:
                                 fi.writelines(lines)
                                 fi.close()
 
