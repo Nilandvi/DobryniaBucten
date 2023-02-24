@@ -41,7 +41,7 @@ board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
 h = Home()
-k = Buttn()
+k = Buttn('wall-e.png')
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
 
@@ -195,7 +195,7 @@ while running:
     elif a.rect.x >= 1230 and a.rect.y <= 121:
         import main_beach
         sys.exit()
-    elif a.rect.x >= 1280 - 100 and a.rect.y >= 680 - 128:
+    elif a.rect.x >= 1280 - 120 and a.rect.y >= 680 - 128:
         board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
     elif 515 <= a.rect.x <= 573 and 110 <= a.rect.y <= 150:
         import bar
