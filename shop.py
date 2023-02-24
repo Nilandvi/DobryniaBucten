@@ -54,17 +54,19 @@ while True:
             print(pygame.mouse.get_pos())
         #elif event.type == pygame.MOUSEMOTION:
     
-    if 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
-        table = InfoTable("barup")
-        abup = pygame.image.load("shop\\a_bar.png")
-        screen.blit(abup, (523, 224))
-        pygame.draw.rect(screen, BLACK, (940, 0, 340, 350))
-        table.draw()
-        #цикл для вывода нужных ресурсов и их стоимости из БД
-    else: 
-        bup = pygame.image.load("shop\\bar.png")
-        screen.blit(bup, (523, 224))
+    bars = [(523, 224), (659, 224), (511, 56), (625, 56), (747, 56)]
+    table = InfoTable("barup")
+    abup = pygame.image.load("shop\\a_bar.png")
+    bar = pygame.image.load("shop\\bar.png")
 
+    for bar_pos in bars:
+        if bar_pos[0] <= pygame.mouse.get_pos()[0] <= bar_pos[0] + 61 and bar_pos[1] <= pygame.mouse.get_pos()[1] <= bar_pos[1] + 64:
+            screen.blit(abup, bar_pos)
+            pygame.draw.rect(screen, BLACK, (940, 0, 340, 350))
+            table.draw()
+        else:
+            screen.blit(bar, bar_pos)
+    
     pygame.display.update()
     screen.blit(bg, (0, 0))
 
