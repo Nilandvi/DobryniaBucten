@@ -127,7 +127,7 @@ while running:
     if spin:
         if a.update5(border4):
             a.image = a.images[index]
-            dis = pg.image.load('data\\dislike.png')
+            dis = pg.image.load('icon\\dislike.png')
             dis_rect = dis.get_rect(bottomright=((a.rect.x + 80), (a.rect.y + 15)))
             sc.blit(dis, dis_rect)
             pg.display.update()
