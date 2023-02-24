@@ -39,7 +39,7 @@ class Border(pygame.sprite.Sprite):
 board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
-k = Buttn('cobl.png')
+k = Buttn('cobl.png', 1280 - 120, 680 - 128)
 
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'rock_.png', 30, 17)
@@ -183,7 +183,6 @@ while running:
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
     res_count(screen, lines)
-
 
     if a.rect.x >= WIDTH - 140 and a.rect.y <= 50:
         os.system('start main.py')

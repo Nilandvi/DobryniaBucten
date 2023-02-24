@@ -41,7 +41,7 @@ board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
 h = Home()
-k = Buttn('wall-e.png')
+k = Buttn('wall-e.png', 1280 - 120, 680 - 128)
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
 

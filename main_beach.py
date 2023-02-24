@@ -3,6 +3,9 @@ from dobrynia import Hodit
 from res import *
 from load_image import *
 from Boardd import Board
+from button import Buttn
+from button import buttn
+
 
 lstx = []
 index = 0
@@ -38,6 +41,7 @@ class Border(pygame.sprite.Sprite):
 board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
+k = Buttn('sand.png', 1280 - 100, 300)
 
 running = True
 board.random_spawn_trees(50,  lstx, lsty, tree_sprites, 'clay_test2.png', 30, 12)
@@ -176,6 +180,7 @@ while running:
         if index >= 12:
             index = 10
     board.rerender(screen, 'test_beach1.png')
+    buttn.draw(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
@@ -183,6 +188,8 @@ while running:
     if a.rect.x <= 80 and a.rect.y <= 40:
         os.system('start main.py')
         sys.exit()
+    elif a.rect.x >= 1280 - 100 and a.rect.y >= 300:
+        board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'clay_test2.png', 30, 12)
     else:
         clock.tick(30)
         pg.display.update()

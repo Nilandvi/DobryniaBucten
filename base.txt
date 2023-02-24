@@ -2,9 +2,9 @@
 Wood:
 113
 Rock:
-152
+208
 Clay:
-0
+58
 Money:
 0
 
