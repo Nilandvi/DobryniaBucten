@@ -1,10 +1,10 @@
 --Resourses
 Wood:
-100
+113
 Rock:
-0
+208
 Clay:
-0
+58
 Money:
 0
 

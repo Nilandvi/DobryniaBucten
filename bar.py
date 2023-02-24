@@ -68,6 +68,9 @@ while runGame:
     entities.draw(screen)
     screen.blit(bg, (0, 0))
     screen.blit(hero.image, hero.rect)
+    if 300 <= hero.rect.x <= 510 and 584 <= hero.rect.y <= 680:
+        os.system('start main.py')
+        sys.exit(ss)
     pg.display.update()
     clock.tick(30)
 pygame.quit()

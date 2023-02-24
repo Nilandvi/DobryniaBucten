@@ -65,4 +65,4 @@ class Player(sprite.Sprite):
     def draw(self, screen): # Выводим себя на экран
         screen.blit(self.image, (self.rect.x,self.rect.y))
 
-hero = Player(430,600)
+hero = Player(420,500)
