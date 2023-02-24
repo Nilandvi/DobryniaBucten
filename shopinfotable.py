@@ -63,3 +63,4 @@ class InfoTable:
             screen.blit(self.prices[i], rect)
             screen.blit(self.icons[i], self.icon_pos[i])
         pygame.display.flip()
+        pygame.display.update()
