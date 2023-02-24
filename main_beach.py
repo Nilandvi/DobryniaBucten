@@ -120,7 +120,6 @@ while running:
             with open('base.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
-aaaa
     if spin:
         if a.update5(border4):
             a.image = a.images[index]

@@ -45,10 +45,14 @@ k = Buttn()
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
 
-Border(1, 1, WIDTH - 1, 1, border1)
-Border(9, 203, 9, HEIGHT - 3, border2)
+Border(380, 130, 515, 130, border1)
+Border(573, 130, 715, 130, border1)
+Border(9, 183, 9, HEIGHT - 3, border2)
+Border(715, 1, 715, 130, border2)
+Border(375, 1, 375, 130, border4)
 Border(3, HEIGHT - 53, WIDTH - 3, HEIGHT - 3, border3)
 Border(WIDTH - 9, 143, WIDTH - 9, HEIGHT - 3, border4)
+Border(1, 1, WIDTH - 1, 1, border1)
 pg.display.flip()
 flag1 = False
 flag2 = False
@@ -186,13 +190,16 @@ while running:
     home.draw(screen)
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
-        os.system('start main_cave.py')
+        import main_cave
         exit()
     elif a.rect.x >= 1230 and a.rect.y <= 121:
         import main_beach
         sys.exit()
     elif a.rect.x >= 1280 - 100 and a.rect.y >= 680 - 128:
         board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
+    elif 515 <= a.rect.x <= 573 and 110 <= a.rect.y <= 150:
+        import bar
+        exit()
     else:
         clock.tick(30)
         pg.display.update()

@@ -27,8 +27,8 @@ class Hodit(pygame.sprite.Sprite):
         self.images.append(load_image_data('dobryny_side1_right.png').convert_alpha())
         self.image = dob
         self.rect = self.image.get_rect()
-        self.rect.x = 534
-        self.rect.y = 160
+        self.rect.x = 524
+        self.rect.y = 200
 
     def update1(self, bord):
         if pygame.sprite.spritecollideany(self, bord):
