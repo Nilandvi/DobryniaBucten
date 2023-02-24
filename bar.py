@@ -1,3 +1,5 @@
+import time
+
 from settings import *
 from maps import bar
 from character import *
@@ -54,6 +56,8 @@ while runGame:
                 up = False
             if event.key == pygame.K_s:
                 down = False
+    s = pygame.mixer.Sound('sounds\\shag.ogg')
+    s.set_volume(0.4)
     if left:
         hero.image = anims[index]
         index += 1
@@ -74,6 +78,12 @@ while runGame:
         index += 1
         if index >= 4:
             index = 0
+
+    if down or up or left or right:
+        s.play()
+        time.sleep(0.05)
+
+
     hero.update(left, right, down, up, platforms)
     entities.draw(screen)
     screen.blit(bg, (0, 0))
