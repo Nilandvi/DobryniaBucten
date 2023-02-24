@@ -1,20 +1,20 @@
 --Resourses
 Wood:
-113
+2890
 Rock:
-208
+2200
 Clay:
-58
+3100
 Money:
-0
+4861
 
 --Events
 Cutscene:
 No
 Bar lvl:
-0
+1
 BoostGirs:
-No
+1
 
 --Static
 Objects:
@@ -32,6 +32,6 @@ Distance:
 Coctails:
 0
 volume:
-0.5
+1.0
 locations:
 4

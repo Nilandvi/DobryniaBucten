@@ -1,13 +1,14 @@
 from settings import *
 from res import *
 from shopinfotable import InfoTable
+from shop_price import *
 from load_image import *
+from tranzaction import *
 
 # Определение цветов
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 bg = pygame.image.load("locations\\shop.png")
-
 
 screen.blit(bg, (0, 0))
 pygame.draw.rect(screen, BLACK, (0, 490, 800, 680))
@@ -41,8 +42,7 @@ while messages:
     # Перейти на новую строку
     y += font.size(line)[1]
     pygame.display.update()
-    time.sleep(0.01)
-
+    time.sleep(1)
 # Основной игровой цикл
 while True:
     res_count(screen, lines)
@@ -51,64 +51,36 @@ while True:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONUP:
-            print(pygame.mouse.get_pos())
-        #elif event.type == pygame.MOUSEMOTION:
-    
+            if 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+                tranz("barup")
+            if 659 <= pygame.mouse.get_pos()[0] <= 724 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+                tranz("boost")
+            if 511 <= pygame.mouse.get_pos()[0] <= 575 and 56 <= pygame.mouse.get_pos()[1] <= 120:
+                tranz("wood")
+            if 625 <= pygame.mouse.get_pos()[0] <= 689 and 56 <= pygame.mouse.get_pos()[1] <= 120:
+                tranz("stone")
+            if 747 <= pygame.mouse.get_pos()[0] <= 811 and 56 <= pygame.mouse.get_pos()[1] <= 120:
+                tranz("clay")
+
+
     screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar.png'), (64, 64)), (523, 224))
     screen.blit(pygame.transform.scale(pygame.image.load('shop\\speed.png'), (64, 64)), (659, 224))
     screen.blit(pygame.transform.scale(pygame.image.load('shop\\oak.png'), (64, 64)), (511, 65))
     screen.blit(pygame.transform.scale(pygame.image.load('shop\\rock.png'), (64, 64)), (625, 56))
     screen.blit(pygame.transform.scale(pygame.image.load('shop\\clay.png'), (64, 64)), (747, 56))
     
-    if 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
-        table = InfoTable("barup")
-        abup = pygame.transform.scale(pygame.image.load('shop\\a_bar.png'), (64, 64))
-        screen.blit(abup, (523, 224))
-        pygame.draw.rect(screen, (	205, 133, 63), (940, 0, 340, 350))
-        pygame.draw.rect(screen, (210, 105, 30), (940, 0, 340, 350), 5)
-        table.draw()
-    if 659 <= pygame.mouse.get_pos()[0] <= 724 and 224 <= pygame.mouse.get_pos()[1] <= 288:
-        table = InfoTable("boost")
-        abup = pygame.transform.scale(pygame.image.load('shop\\a_speed.png'), (64, 64))
-        screen.blit(abup, (659, 224))
-        pygame.draw.rect(screen, (	205, 133, 63), (940, 0, 340, 350))
-        pygame.draw.rect(screen, (210, 105, 30), (940, 0, 340, 350), 5)
-        table.draw()
-    if 511 <= pygame.mouse.get_pos()[0] <= 575 and 56 <= pygame.mouse.get_pos()[1] <= 120:
-        table = InfoTable("wood")
-        abup = pygame.transform.scale(pygame.image.load('shop\\a_oak.png'), (64, 64))
-        screen.blit(abup, (511, 57))
-        pygame.draw.rect(screen, (	205, 133, 63), (940, 0, 340, 350))
-        pygame.draw.rect(screen, (210, 105, 30), (940, 0, 340, 350), 5)
-        table.draw()    
-    if 625 <= pygame.mouse.get_pos()[0] <= 689 and 56 <= pygame.mouse.get_pos()[1] <= 120:
-        table = InfoTable("stone")
-        abup = pygame.transform.scale(pygame.image.load('shop\\a_rock.png'), (64, 64))
-        screen.blit(abup, (625, 56))
-        pygame.draw.rect(screen, (	205, 133, 63), (940, 0, 340, 350))
-        pygame.draw.rect(screen, (210, 105, 30), (940, 0, 340, 350), 5)
-        table.draw()
-    if 747 <= pygame.mouse.get_pos()[0] <= 811 and 56 <= pygame.mouse.get_pos()[1] <= 120:
-        table = InfoTable("clay")
-        abup = pygame.transform.scale(pygame.image.load('shop\\a_clay.png'), (64, 64))
-        screen.blit(abup, (747, 56))
-        pygame.draw.rect(screen, (	205, 133, 63), (940, 0, 340, 350))
-        pygame.draw.rect(screen, (210, 105, 30), (940, 0, 340, 350), 5)
-        table.draw()
+    regions = [(523, 224, 'barup', 'shop\\a_bar.png'), (659, 224, 'boost', 'shop\\a_speed.png'), (511, 57, 'wood', 'shop\\a_oak.png'), (625, 56, 'stone', 'shop\\a_rock.png'), (747, 56, 'clay', 'shop\\a_clay.png')]
+
+    for region in regions:
+        x, y, table_type, image_path = region
+        if x <= pygame.mouse.get_pos()[0] <= x + 61 and y <= pygame.mouse.get_pos()[1] <= y + 64:
+            table = InfoTable(table_type)
+            abup = pygame.transform.scale(pygame.image.load(image_path), (64, 64))
+            screen.blit(abup, (x, y))
+            pygame.draw.rect(screen, (205, 133, 63), (940, 0, 340, 350))
+            pygame.draw.rect(screen, (210, 105, 30), (940, 0, 340, 350), 5)
+            table.draw()
+
 
     pygame.display.update()
     screen.blit(bg, (0, 0))
-
-
-
-
-
-
-
-
-
-
-
-
-#(522, 278)
-#(744, 278)

@@ -21,11 +21,9 @@ class InfoTable:
         pygame.transform.scale(pygame.image.load('icons\\clay.png'), self.icon_size), 
         pygame.transform.scale(pygame.image.load('icons\\coin.png'), self.icon_size)]
         self.arrow = pygame.transform.scale(pygame.image.load('icons\\arrow.png'), self.icon_size)
-        
-
-        # Find item in lst with matching name
         item = next((item for item in lst if item["name"] == name), None)
         if item is not None:
+            self.boost = lines[16]
             self.flag = 0
             self.result = item["result"]
             self.info_text = item["description"]
@@ -36,7 +34,7 @@ class InfoTable:
                 self.title_font.render(str(item["price"][2]), True, self.price_color),
                 self.title_font.render(str(item["price"][3]), True, self.price_color),
             ]
-
+            
             if int(lines[2]) >= item["price"][0] and int(lines[4]) >= item["price"][1] and int(lines[6]) >= item["price"][2] and  int(lines[8]) >= item["price"][3]:
                 self.flag = 1
         else:
@@ -55,9 +53,15 @@ class InfoTable:
         screen.blit(self.result, (1200, 120))
         screen.blit(self.title_font.render(self.count, True, self.title_color), (1232, 180))
         if self.flag == 1:
-            screen.blit(self.title_font.render("V Доступно", True, self.true_color), (980, 250))
+            if lines[16] == "1":
+                screen.blit(self.title_font.render("Куплено", True, self.true_color), (980, 250))
+            else:
+                screen.blit(self.title_font.render("V Доступно", True, self.true_color), (980, 250))
         else:
-            screen.blit(self.title_font.render("X Недоступно", True, self.wrong_color), (980, 250))
+            if lines[16] == "1":
+                screen.blit(self.title_font.render("Куплено", True, self.true_color), (980, 250))
+            else:
+                screen.blit(self.title_font.render("X Недоступно", True, self.wrong_color), (980, 250))
         for i in range(len(self.icons)):
             rect = self.prices[i].get_rect(center=self.price_pos[i])
             screen.blit(self.prices[i], rect)
