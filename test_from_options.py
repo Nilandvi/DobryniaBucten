@@ -2,6 +2,7 @@ import pygame
 import pygame_widgets
 from pygame_widgets.button import Button
 from pygame_widgets.slider import Slider
+from settings import *
 
 
 # инициализируем pygame и создаем окно
@@ -18,7 +19,7 @@ volume_rect = volume_text.get_rect(center=(200, 85))
 volume_slider = Slider(screen, 150, 150, 100, 30, min=0, max=10, step=1)
 
 # загружаем музыкальный файл
-pygame.mixer.music.load("sounds\\music.ogg")
+pygame.mixer.music.load("sounds\\ost.mp3")
 
 # создаем кнопки управления музыкой
 play_button = Button(screen, 100, 250, 75, 25, text="Воспроизвести",
@@ -45,6 +46,16 @@ while True:
         volume_indicator_text = font.render(volume_indicator, True, (0, 0, 0))
         volume_indicator_rect = volume_indicator_text.get_rect(center=(200, 200))
         pygame.mixer.music.set_volume(volume / 10)
+        lines[34] = str(volume / 10) + '\n'
+        with open('base.txt', 'w') as fi:
+            fi.writelines(lines)
+            fi.close()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                if lines[36] == '4':
+                    os.system('start bar.py')
+                    exit()
+
 
         # прослушиваем события для каждой кнопки
         play_button.listen(event)

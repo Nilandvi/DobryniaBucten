@@ -31,3 +31,7 @@ Distance:
 0
 Coctails:
 0
+volume:
+0.5
+locations:
+4
