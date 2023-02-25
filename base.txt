@@ -1,6 +1,6 @@
 --Resourses
 Wood:
-5799
+5825
 Rock:
 6899
 Clay:
@@ -32,6 +32,6 @@ Distance:
 Coctails:
 0
 volume:
-0.1
+0.4
 locations:
-4
+1

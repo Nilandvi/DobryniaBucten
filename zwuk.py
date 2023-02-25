@@ -12,7 +12,7 @@ click = pygame.mixer.Sound(musics[0])
 wake = pygame.mixer.Sound(musics[1])
 
 zvukmus = 0.5
-pygame.mixer.music.load('data\\music.mp3')
+pygame.mixer.music.load('sounds\\music.mp3')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(zvukmus)
 wake.set_volume(volumes)

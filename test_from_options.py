@@ -1,3 +1,5 @@
+import os
+
 import pygame
 import pygame_widgets
 from pygame_widgets.button import Button
@@ -54,6 +56,9 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 if lines[36] == '4':
                     os.system('start bar.py')
+                    exit()
+                if lines[36] == '1':
+                    os.system('start main.py')
                     exit()
 
 
