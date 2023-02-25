@@ -61,7 +61,7 @@ while True:
                     os.system('start main.py')
                     exit()
                 if lines[36] == '2':
-                    os.system('start main.py')
+                    os.system('start main_beach.py')
                     exit()
 
 
