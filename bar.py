@@ -57,7 +57,7 @@ while runGame:
             if event.key == pygame.K_s:
                 down = False
     s = pygame.mixer.Sound('sounds\\shag.ogg')
-    s.set_volume(0.4)
+    s.set_volume(0.35)
     if left:
         hero.image = anims[index]
         index += 1
@@ -80,10 +80,9 @@ while runGame:
             index = 0
 
     if down or up or left or right:
-        s.play()
-        time.sleep(0.05)
-
-
+        s.play(1, 0, 1000)
+    else:
+        s.stop()
     hero.update(left, right, down, up, platforms)
     entities.draw(screen)
     screen.blit(bg, (0, 0))

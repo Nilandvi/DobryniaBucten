@@ -1,12 +1,12 @@
 --Resourses
 Wood:
-6599
+5799
 Rock:
-7299
+6899
 Clay:
-7299
+6699
 Money:
-3975
+4065
 
 --Events
 Cutscene:
@@ -32,6 +32,6 @@ Distance:
 Coctails:
 0
 volume:
-1.0
+0.1
 locations:
 4
