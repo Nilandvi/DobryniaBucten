@@ -1,12 +1,12 @@
 --Resourses
 Wood:
-7899
+6599
 Rock:
-7899
+7299
 Clay:
-7899
+7299
 Money:
-3850
+3975
 
 --Events
 Cutscene:
