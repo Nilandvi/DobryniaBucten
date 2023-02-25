@@ -1,18 +1,18 @@
 --Resourses
 Wood:
-2890
+7899
 Rock:
-2200
+7899
 Clay:
-3100
+7899
 Money:
-4861
+3850
 
 --Events
 Cutscene:
 No
 Bar lvl:
-1
+4
 BoostGirs:
 1
 
