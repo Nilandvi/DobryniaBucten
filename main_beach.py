@@ -66,7 +66,9 @@ flag3 = False
 flag4 = False
 spin = False
 shiz = False
-
+pygame.mixer.music.load('sounds\\sand.mp3')
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(float(lines[34]))
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -104,6 +106,13 @@ while running:
                 if a.update6(border4):
                     shiz = True
                     index = 0
+            if event.key == pygame.K_ESCAPE:
+                lines[36] = '2'
+                with open('base.txt', 'w') as fi:
+                    fi.writelines(lines)
+                    fi.close()
+                import test_from_options
+                exit()
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
@@ -179,6 +188,10 @@ while running:
         index += 1
         if index >= 12:
             index = 10
+    s = pygame.mixer.Sound('sounds\\shag_s.ogg')
+    s.set_volume(0.35)
+    if flag1 or flag2 or flag3 or flag4 or spin or shiz:
+        s.play(1, 0)
     board.rerender(screen, 'test_beach1.png')
     buttn.draw(screen)
     all_sprites.draw(screen)

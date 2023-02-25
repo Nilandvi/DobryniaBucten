@@ -60,6 +60,9 @@ while True:
                 if lines[36] == '1':
                     os.system('start main.py')
                     exit()
+                if lines[36] == '2':
+                    os.system('start main.py')
+                    exit()
 
 
         # прослушиваем события для каждой кнопки
