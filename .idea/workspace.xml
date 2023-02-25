@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ff706cae-bacd-48f4-acfc-85359c9571a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_beach.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_beach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base.txt" beforeDir="false" afterPath="$PROJECT_DIR$/base.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_cave.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_cave.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_from_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_from_options.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,13 +26,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.main_beach">
+}</component>
+  <component name="RunManager" selected="Python.main_cave">
     <configuration name="bar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DobryniaBucten" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,6 +75,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main_cave" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DobryniaBucten" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_cave.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="zwuk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DobryniaBucten" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,17 +121,17 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.shop" />
       <item itemvalue="Python.shop_price" />
+      <item itemvalue="Python.main_cave" />
       <item itemvalue="Python.bar" />
       <item itemvalue="Python.main_beach" />
       <item itemvalue="Python.zwuk" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main_cave" />
         <item itemvalue="Python.main_beach" />
         <item itemvalue="Python.zwuk" />
         <item itemvalue="Python.bar" />
-        <item itemvalue="Python.shop" />
-        <item itemvalue="Python.shop_price" />
       </list>
     </recent_temporary>
   </component>

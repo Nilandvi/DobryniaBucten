@@ -63,7 +63,9 @@ while True:
                 if lines[36] == '2':
                     os.system('start main_beach.py')
                     exit()
-
+                if lines[36] == '3':
+                    os.system('start main_cave.py')
+                    exit()
 
         # прослушиваем события для каждой кнопки
         play_button.listen(event)

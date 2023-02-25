@@ -55,6 +55,10 @@ flag3 = False
 flag4 = False
 spin = False
 shiz = False
+pygame.mixer.music.load('sounds\\cave.mp3')
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(float(lines[34]))
+
 
 while running:
     for event in pygame.event.get():
@@ -97,6 +101,13 @@ while running:
                 if a.update6(border4):
                     shiz = True
                     index = 0
+            if event.key == pygame.K_ESCAPE:
+                lines[36] = '3'
+                with open('base.txt', 'w') as fi:
+                    fi.writelines(lines)
+                    fi.close()
+                import test_from_options
+                exit()
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
@@ -183,6 +194,10 @@ while running:
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
     res_count(screen, lines)
+    s = pygame.mixer.Sound('sounds\\hag.ogg')
+    s.set_volume(0.35)
+    if flag1 or flag2 or flag3 or flag4 or spin or shiz:
+        s.play(1, 0)
 
     if a.rect.x >= WIDTH - 140 and a.rect.y <= 50:
         os.system('start main.py')
