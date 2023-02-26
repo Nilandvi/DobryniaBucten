@@ -45,7 +45,7 @@ def shot():
         print(tru)
     elif tru == 6:
         a = int(lines[8]) + 5
-        lines[8] = lines[8].replace(lines[8], str(a))
+        lines[8] = lines[8].replace(lines[8], str(a) + '\n')
         with open('base.txt', 'w') as fi:
             fi.writelines(lines)
             fi.close()

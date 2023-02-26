@@ -6,7 +6,9 @@ Rock:
 Clay:
 299
 Money:
-3575--Events
+3585
+
+--Events
 Cutscene:
 No
 Bar lvl:
