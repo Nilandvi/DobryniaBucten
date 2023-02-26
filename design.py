@@ -17,7 +17,7 @@ output5 = TextBox(screen, 780, 470, 50, 50, fontSize=30)
 ex = Button(
     screen, #слой на котором кнопка
     10, # корда х
-    10, # корда у
+    30, # корда у
     50, # ширина кнопки
     50, # высота кнопки
     text='Х', # текст кнопки
@@ -31,8 +31,8 @@ ex = Button(
     onClick=lambda: retur()) #функция когда кнопка нажата
 
 def retur():
-    pygame.quit()
-
+    os.system('start bar.py')
+    exit()
 
 
 output.disable()

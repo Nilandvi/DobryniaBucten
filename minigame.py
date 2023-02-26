@@ -1,6 +1,8 @@
+import pygame
+
 from settings import *
 from design import *
-
+from res import res_count
 
 bg = pygame.image.load("locations\\bar_counter.png")
 screen.blit(bg, (0, 0))
@@ -42,6 +44,12 @@ def shot():
     if tru != 6:
         print(tru)
     elif tru == 6:
+        a = int(lines[8]) + 5
+        lines[8] = lines[8].replace(lines[8], str(a))
+        with open('base.txt', 'w') as fi:
+            fi.writelines(lines)
+            fi.close()
+        screen.blit(bg, (0, 0))
         random_numbers = generate_random_numbers(6, 50)
 
 
@@ -49,27 +57,32 @@ def draw():
     for i in range(len(sliders)):
         if sliders[i].getValue() == random_numbers[i]:
             pygame.draw.rect(screen, colors[i], (20, 540 - 66 * i, 70, 66))
+        else:
+            pass
             #звук разливайки
 
+
+def draw_rec():
     pygame.draw.rect(screen, (66,203,29), (20, 206, 70, 402), 5)
 
-runGame = True
-while runGame:
+
+running = True
+while running:
     events = pygame.event.get()
     for event in pygame.event.get():
+        draw_rec()
         if event.type == pygame.QUIT: 
-            runGame = False
-
-    screen.blit(bg, (0, 0))
-
-    draw()
-    for i in range(len(outputs)):
-        outputs[i].setText(sliders[i].getValue())
-    for g in range(6):
-        text = font.render(str(random_numbers[g]), True, (139, 0, 139))
-        screen.blit(text, (900, 90 + 70 * g))
-    pygame_widgets.update(events)
-    pg.display.update()
-    pygame.display.flip()
+            running = False
+        elif event.type == pygame.MOUSEMOTION:
+            draw()
+        for i in range(len(outputs)):
+            outputs[i].setText(sliders[i].getValue())
+        for g in range(6):
+            text = font.render(str(random_numbers[g]), True, (139, 0, 139))
+            screen.blit(text, (900, 90 + 70 * g))
+        res_count(screen, lines)
+        pygame_widgets.update(events)
+        pg.display.update()
+        pygame.display.flip()
 
 pygame.quit()

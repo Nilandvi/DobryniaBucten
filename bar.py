@@ -89,7 +89,12 @@ while runGame:
     screen.blit(hero.image, hero.rect)
     if 300 <= hero.rect.x <= 510 and 584 <= hero.rect.y <= 680:
         os.system('start main.py')
-        sys.exit()
+        exit()
+    elif 715 <= hero.rect.x <= 894 and 205 <= hero.rect.y <= 251:
+        pygame.mixer.music.stop()
+        s.stop()
+        import minigame
+        exit()
     pg.display.update()
     clock.tick(30)
 pygame.quit()
