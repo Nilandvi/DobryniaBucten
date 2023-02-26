@@ -4,7 +4,6 @@ from res import *
 from load_image import *
 from Boardd import Board
 from button import Buttn
-from button import buttn
 
 
 lstx = []
@@ -23,6 +22,7 @@ border6 = pygame.sprite.Group()
 tree_sprites = pygame.sprite.Group()
 dobrinya = pygame.sprite.Group()
 b = pygame.sprite.Group()
+buttn = pygame.sprite.Group()
 
 
 class Border(pygame.sprite.Sprite):
@@ -39,9 +39,12 @@ class Border(pygame.sprite.Sprite):
 
 
 board = Board(40, 21)
+speed = 11
+if lines[16].rstrip() == '1':
+    speed += 5
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
-k = Buttn('sand.png', 1280 - 100, 300)
+k = Buttn(1, 1280 - 100, 300, buttn)
 
 running = True
 board.random_spawn_trees(50,  lstx, lsty, tree_sprites, 'clay_test2.png', 30, 12)
@@ -160,21 +163,21 @@ while running:
 
     if flag1:
         if a.update2(border2):
-            a.rect.x -= 11
+            a.rect.x -= speed
         a.image = a.images[index]
         index += 1
         if index >= 9:
             index = 7
     if flag2:
         if a.update3(border3):
-            a.rect.y += 11
+            a.rect.y += speed
         a.image = a.images[index]
         index += 1
         if index >= 6:
             index = 4
     if flag3:
         if a.update1(border1):
-            a.rect.y -= 11
+            a.rect.y -= speed
 
         a.image = a.images[index]
         index += 1
@@ -183,7 +186,7 @@ while running:
 
     if flag4:
         if a.update4(border4):
-            a.rect.x += 11
+            a.rect.x += speed
         a.image = a.images[index]
         index += 1
         if index >= 12:

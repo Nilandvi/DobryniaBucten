@@ -1,3 +1,5 @@
+import os
+
 from settings import *
 from res import *
 from shopinfotable import InfoTable
@@ -30,7 +32,7 @@ while messages:
     message = messages.pop(0)
     line = ''
     for char in message:
-        # Добавить букву в текущую строку
+            # Добавить букву в текущую строку
         new_line = line + char
         line = new_line
         # Отобразить текущую строку на экране
@@ -82,6 +84,11 @@ while True:
             if 747 <= pygame.mouse.get_pos()[0] <= 811 and 56 <= pygame.mouse.get_pos()[1] <= 120:
                 tranz("clay")
                 #звук покупки
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = event.pos
+            if 1005 <= x <= 1045 and 101<= y <= 135:
+                os.system('start main.py')
+                exit()
 
     if lines[14][0] == "1":
         screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar1.png'), (64, 64)), (523, 224))

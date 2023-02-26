@@ -6,7 +6,7 @@ from dobrynia import Hodit
 from res import *
 from Boardd import Board
 from button import Buttn
-from button import buttn
+from shop_on_main import Shop
 
 lstx = []
 index = 0
@@ -22,6 +22,9 @@ tree_sprites = pygame.sprite.Group()
 dobrinya = pygame.sprite.Group()
 b = pygame.sprite.Group()
 home = pygame.sprite.Group()
+shop1 = pygame.sprite.Group()
+buttn = pygame.sprite.Group()
+
 
 class Border(pygame.sprite.Sprite):
     def __init__(self, x1, y1, x2, y2, name):
@@ -37,10 +40,14 @@ class Border(pygame.sprite.Sprite):
 
 
 board = Board(40, 21)
+speed = 11
+if lines[16].rstrip() == '1':
+    speed += 5
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
 h = Home(home)
-k = Buttn('wall-e.png', 1280 - 120, 680 - 128)
+k = Buttn(0, 1280 - 120, 680 - 128, buttn)
+sh = Shop(shop1)
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
 
@@ -52,6 +59,10 @@ Border(375, 1, 375, 130, border4)
 Border(3, HEIGHT - 53, WIDTH - 3, HEIGHT - 3, border3)
 Border(WIDTH - 9, 143, WIDTH - 9, HEIGHT - 3, border4)
 Border(1, 1, WIDTH - 1, 1, border1)
+Border(755, 130, 850, 130, border1)
+Border(908, 130, 1000, 130, border1)
+Border(1000, 1, 1000, 130, border2)
+Border(755, 1, 755, 130, border4)
 pg.display.flip()
 flag1 = False
 flag2 = False
@@ -73,25 +84,25 @@ while running:
 
             if event.key == pygame.K_a:
                 if a.update2(border2):
-                    a.pupam(lstx, lsty)
+                    a.pupam(lstx, lsty, speed)
                     flag1 = True
                     index = 7
 
             if event.key == pygame.K_s:
                 if a.update3(border3):
-                    a.pupa2m(lstx, lsty)
+                    a.pupa2m(lstx, lsty, speed)
                     flag2 = True
                     index = 4
 
             if event.key == pygame.K_w:
                 if a.update1(border1):
-                    a.pupa3m(lstx, lsty)
+                    a.pupa3m(lstx, lsty, speed)
                     flag3 = True
                     index = 1
 
             if event.key == pygame.K_d:
                 if a.update4(border4):
-                    a.pupa4m(lstx, lsty)
+                    a.pupa4m(lstx, lsty, speed)
                     flag4 = True
                     index = 10
 
@@ -162,24 +173,24 @@ while running:
 
     if flag1:
         if a.update2(border2):
-            a.pupam(lstx, lsty)
-            a.rect.x -= 11
+            a.pupam(lstx, lsty, speed)
+            a.rect.x -= speed
         a.image = a.images[index]
         index += 1
         if index >= 9:
             index = 7
     if flag2:
         if a.update3(border3):
-            a.pupa2m(lstx, lsty)
-            a.rect.y += 11
+            a.pupa2m(lstx, lsty, speed)
+            a.rect.y += speed
         a.image = a.images[index]
         index += 1
         if index >= 6:
             index = 4
     if flag3:
         if a.update1(border1):
-            a.pupa3m(lstx, lsty)
-            a.rect.y -= 11
+            a.pupa3m(lstx, lsty, speed)
+            a.rect.y -= speed
 
         a.image = a.images[index]
         index += 1
@@ -188,8 +199,8 @@ while running:
 
     if flag4:
         if a.update4(border4):
-            a.pupa4m(lstx, lsty)
-            a.rect.x += 11
+            a.pupa4m(lstx, lsty, speed)
+            a.rect.x += speed
         a.image = a.images[index]
         index += 1
         if index >= 12:
@@ -204,6 +215,7 @@ while running:
     tree_sprites.draw(screen)
     dobrinya.draw(screen)
     home.draw(screen)
+    shop1.draw(screen)
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
         import main_cave
@@ -214,9 +226,12 @@ while running:
     elif a.rect.x >= 1280 - 120 and a.rect.y >= 680 - 128:
         board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
     elif 515 <= a.rect.x <= 573 and 110 <= a.rect.y <= 150:
-        if lines[14] == '3' + '\n':
+        if lines[14] == '3' + '\n' or lines[14] == '4' + '\n':
             import bar
             exit()
+    elif 850 <= a.rect.x <= 905 and 120 <= a.rect.y <= 140:
+        import shop
+
     else:
         clock.tick(30)
         pg.display.update()

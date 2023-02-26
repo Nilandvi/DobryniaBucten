@@ -66,61 +66,61 @@ class Hodit(pygame.sprite.Sprite):
         else:
             return True
 
-    def pupam(self, lstx, lsty):
+    def pupam(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 3
             b = self.rect.y // 32 + 4
             if a == lstx[x] + 2 and b == lsty[x] + 3 or a == lstx[x] + 3 and b == lsty[x] + 2 or \
                     a == lstx[x] + 3 and b == lsty[x] + 1:
-                self.rect.x += 11
+                self.rect.x += speed
 
-    def pupa2m(self, lstx, lsty):
+    def pupa2m(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 2
             b = self.rect.y // 32 + 3
             if a == lstx[x] and b == lsty[x] or a == lstx[x] + 1 and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
-                self.rect.y -= 11
+                self.rect.y -= speed
 
-    def pupa3m(self, lstx, lsty):
+    def pupa3m(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 1
             b = self.rect.y // 32 + 1
             if a == lstx[x] and b == lsty[x] or a == lstx[x] - 2 and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
-                self.rect.y += 11
+                self.rect.y += speed
 
-    def pupa4m(self, lstx, lsty):
+    def pupa4m(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 1
             b = self.rect.y // 32 + 1
             if a == lstx[x] - 1 and b == lsty[x] or a == lstx[x] - 2 and b == lsty[x] - 1 or \
                     a == lstx[x] - 2 and b == lsty[x] - 2:
-                self.rect.x -= 11
+                self.rect.x -= speed
 
-    def pupac(self, lstx, lsty):
+    def pupac(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 2
             b = self.rect.y // 32 + 2
             if a == lstx[x] and b == lsty[x]:
-                self.rect.x += 11
+                self.rect.x += speed
 
-    def pupa2c(self, lstx, lsty):
+    def pupa2c(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 2
             b = self.rect.y // 32 + 3
             if a == lstx[x] and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
-                self.rect.y -= 11
+                self.rect.y -= speed
 
-    def pupa3c(self, lstx, lsty):
+    def pupa3c(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 2
             b = self.rect.y // 32 + 2
             if a == lstx[x] and b == lsty[x] or a == lstx[x] - 1 and b == lsty[x]:
-                self.rect.y += 11
+                self.rect.y += speed
 
-    def pupa4c(self, lstx, lsty):
+    def pupa4c(self, lstx, lsty, speed):
         for x in range(len(lstx)):
             a = self.rect.x // 32 + 3
             b = self.rect.y // 32 + 3
             if a == lstx[x] and b == lsty[x] + 1:
-                self.rect.x -= 11
+                self.rect.x -= speed
 

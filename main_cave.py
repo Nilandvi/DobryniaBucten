@@ -4,7 +4,6 @@ from dobrynia import Hodit
 from Boardd import Board
 from res import *
 from button import Buttn
-from button import buttn
 
 lstx = []
 index = 0
@@ -21,7 +20,7 @@ border6 = pygame.sprite.Group()
 tree_sprites = pygame.sprite.Group()
 dobrinya = pygame.sprite.Group()
 b = pygame.sprite.Group()
-
+buttn = pygame.sprite.Group()
 
 class Border(pygame.sprite.Sprite):
     def __init__(self, x1, y1, x2, y2, name):
@@ -37,9 +36,12 @@ class Border(pygame.sprite.Sprite):
 
 
 board = Board(40, 21)
+speed = 11
+if lines[16].rstrip() == '1':
+    speed += 5
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
-k = Buttn('cobl.png', 1280 - 120, 680 - 128)
+k = Buttn(2, 1280 - 120, 680 - 128, buttn)
 
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'rock_.png', 30, 17)
@@ -70,25 +72,25 @@ while running:
 
             if event.key == pygame.K_a:
                 if a.update2(border2):
-                    a.pupac(lstx, lsty)
+                    a.pupac(lstx, lsty, speed)
                     flag1 = True
                     index = 7
 
             if event.key == pygame.K_s:
                 if a.update3(border3):
-                    a.pupa2c(lstx, lsty)
+                    a.pupa2c(lstx, lsty, speed)
                     flag2 = True
                     index = 4
 
             if event.key == pygame.K_w:
                 if a.update1(border1):
-                    a.pupa3c(lstx, lsty)
+                    a.pupa3c(lstx, lsty, speed)
                     flag3 = True
                     index = 1
 
             if event.key == pygame.K_d:
                 if a.update4(border4):
-                    a.pupa4c(lstx, lsty)
+                    a.pupa4c(lstx, lsty, speed)
                     flag4 = True
                     index = 10
 
@@ -156,24 +158,24 @@ while running:
 
     if flag1:
         if a.update2(border2):
-            a.pupac(lstx, lsty)
-            a.rect.x -= 11
+            a.pupac(lstx, lsty, speed)
+            a.rect.x -= speed
         a.image = a.images[index]
         index += 1
         if index >= 9:
             index = 7
     if flag2:
         if a.update3(border3):
-            a.pupa2c(lstx, lsty)
-            a.rect.y += 11
+            a.pupa2c(lstx, lsty, speed)
+            a.rect.y += speed
         a.image = a.images[index]
         index += 1
         if index >= 6:
             index = 4
     if flag3:
         if a.update1(border1):
-            a.pupa3c(lstx, lsty)
-            a.rect.y -= 11
+            a.pupa3c(lstx, lsty, speed)
+            a.rect.y -= speed
 
         a.image = a.images[index]
         index += 1
@@ -182,8 +184,8 @@ while running:
 
     if flag4:
         if a.update4(border4):
-            a.pupa4c(lstx, lsty)
-            a.rect.x += 11
+            a.pupa4c(lstx, lsty, speed)
+            a.rect.x += speed
         a.image = a.images[index]
         index += 1
         if index >= 12:
