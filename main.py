@@ -2,7 +2,6 @@ from settings import *
 from res import *
 from load_image import *
 from home import Home
-from home import home
 from dobrynia import Hodit
 from res import *
 from Boardd import Board
@@ -22,7 +21,7 @@ border4 = pygame.sprite.Group()
 tree_sprites = pygame.sprite.Group()
 dobrinya = pygame.sprite.Group()
 b = pygame.sprite.Group()
-
+home = pygame.sprite.Group()
 
 class Border(pygame.sprite.Sprite):
     def __init__(self, x1, y1, x2, y2, name):
@@ -40,7 +39,7 @@ class Border(pygame.sprite.Sprite):
 board = Board(40, 21)
 clock = pygame.time.Clock()
 a = Hodit(dobrinya)
-h = Home()
+h = Home(home)
 k = Buttn('wall-e.png', 1280 - 120, 680 - 128)
 running = True
 board.random_spawn_trees(50, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
@@ -133,7 +132,9 @@ while running:
             with open('base.txt', 'r') as f:
                 l = f.readlines()
             res_count(screen, l)
-
+    inn = h.hohome()
+    for i in home.sprites():
+        i.image = h.images[inn]
     if spin:
         if a.update5(border4):
             a.image = a.images[index]
@@ -213,8 +214,10 @@ while running:
     elif a.rect.x >= 1280 - 120 and a.rect.y >= 680 - 128:
         board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
     elif 515 <= a.rect.x <= 573 and 110 <= a.rect.y <= 150:
-        import bar
-        exit()
+        if lines[14] == '3' + '\n':
+            import bar
+            exit()
     else:
         clock.tick(30)
         pg.display.update()
+

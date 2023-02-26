@@ -12,7 +12,7 @@ Money:
 Cutscene:
 No
 Bar lvl:
-4
+1
 BoostGirs:
 1
 

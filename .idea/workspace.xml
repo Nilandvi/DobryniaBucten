@@ -4,8 +4,8 @@
     <list default="true" id="ff706cae-bacd-48f4-acfc-85359c9571a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base.txt" beforeDir="false" afterPath="$PROJECT_DIR$/base.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_cave.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_cave.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_from_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_from_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +32,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.main_cave">
+  <component name="RunManager" selected="Python.main">
     <configuration name="bar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DobryniaBucten" />
       <option name="INTERPRETER_OPTIONS" value="" />
