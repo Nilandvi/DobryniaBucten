@@ -17,7 +17,7 @@ wake = pygame.mixer.Sound(musics[1])
 visg = pygame.mixer.Sound(musics[2])
 
 zvukmus = 0.5
-pygame.mixer.music.load('F:\PyCharm Community Edition 2021.3.2\pythonProject3\DobryniaBucten-main\data\music.mp3')
+pygame.mixer.music.load('sounds\\music.mp3')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(zvukmus)
 font = pygame.font.SysFont('Montserrat', 40)
@@ -46,7 +46,7 @@ dobr = pygame.sprite.Group()
 class Dobr(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__(dobr)
-        fofof = pygame.image.load('img\\dobr.png')
+        fofof = pygame.image.load('animation\\dobr.png')
         self.image = fofof
         self.rect = self.image.get_rect()
         self.rect.x = 0
@@ -277,7 +277,7 @@ while running:
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 moving = False
         if moving:
-            dibri.image = pygame.image.load('img\\dobr2.png')
+            dibri.image = pygame.image.load('animation\\dobr2.png')
             dibri.rect.x = pygame.mouse.get_pos()[0]
             dibri.rect.y = pygame.mouse.get_pos()[1]
             visg.play()
@@ -286,7 +286,7 @@ while running:
             pygame.display.update()
             # он пищит
         else:
-            dibri.image = pygame.image.load('img\\dobr.png')
+            dibri.image = pygame.image.load('animation\\dobr.png')
             visg.stop()
             # он больше не пищит
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
