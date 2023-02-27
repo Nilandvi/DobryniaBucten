@@ -1,4 +1,6 @@
 from main_cave import location_cave
+from main_beach import location_beach
+from shop import run_shop
 from settings import *
 from res import *
 from load_image import *
@@ -8,6 +10,7 @@ from res import *
 from Boardd import Board
 from button import Buttn
 from shop_on_main import Shop
+from bar import run_bar
 
 lstx = []
 index = 0
@@ -229,16 +232,38 @@ while running:
         spin = False
         shiz = False
     elif a.rect.x >= 1230 and a.rect.y <= 121:
-        import main_beach
-        sys.exit()
+        location_beach()
+        a.rect.x = 524
+        a.rect.y = 200
+        flag1 = False
+        flag2 = False
+        flag3 = False
+        flag4 = False
+        spin = False
+        shiz = False
     elif a.rect.x >= 1280 - 120 and a.rect.y >= 680 - 128:
         board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
     elif 515 <= a.rect.x <= 573 and 110 <= a.rect.y <= 150:
         if lines[14] == '3' + '\n' or lines[14] == '4' + '\n':
-            import bar
-            exit()
+            run_bar()
+            a.rect.x = 524
+            a.rect.y = 200
+            flag1 = False
+            flag2 = False
+            flag3 = False
+            flag4 = False
+            spin = False
+            shiz = False
     elif 850 <= a.rect.x <= 905 and 120 <= a.rect.y <= 140:
-        import shop
+        run_shop()
+        a.rect.x = 524
+        a.rect.y = 200
+        flag1 = False
+        flag2 = False
+        flag3 = False
+        flag4 = False
+        spin = False
+        shiz = False
 
     else:
         clock.tick(30)

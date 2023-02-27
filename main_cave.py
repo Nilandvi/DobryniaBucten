@@ -197,7 +197,6 @@ def location_cave():
         dobrinya.draw(screen)
         res_count(screen, lines)
 
-
         if flag1 or flag2 or flag3 or flag4 or spin or shiz:
             s.play(1, 0)
 
