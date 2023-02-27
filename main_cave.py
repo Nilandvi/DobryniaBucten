@@ -134,7 +134,7 @@ def location_cave():
         if spin:
             if a.update5(border4):
                 a.image = a.images[index]
-                dis = pg.image.load('data\\dislike.png')
+                dis = pg.image.load('icons\\dislike.png')
                 dis_rect = dis.get_rect(bottomright=((a.rect.x + 80), (a.rect.y + 15)))
                 sc.blit(dis, dis_rect)
                 pg.display.update()
@@ -144,7 +144,7 @@ def location_cave():
         if shiz:
             if a.update6(border4):
                 a.image = a.images[index]
-                imgs = ["data\\m1.png", "data\\m2.png", "data\\m3.png", "data\\m4.png"]
+                imgs = ["icons\\m1.png", "icons\\m2.png", "icons\\m3.png", "icons\\m4.png"]
                 m += 1
                 dis = pg.image.load(imgs[m])
                 dis_rect = dis.get_rect(bottomright=((a.rect.x + 40), (a.rect.y + 15)))
