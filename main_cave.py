@@ -4,6 +4,7 @@ from dobrynia import Hodit
 from Boardd import Board
 from res import *
 from button import Buttn
+from test_from_options import run_options
 
 def location_cave():
     lstx = []
@@ -110,8 +111,7 @@ def location_cave():
                     with open('base.txt', 'w') as fi:
                         fi.writelines(lines)
                         fi.close()
-                    import test_from_options
-                    exit()
+                    run_options()
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
