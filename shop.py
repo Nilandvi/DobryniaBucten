@@ -31,6 +31,8 @@ def run_shop():
     y = 500
 
     while messages:
+        for event in pygame.event.get():
+            pass
         message = messages.pop(0)
         line = ''
         for char in message:

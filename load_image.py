@@ -39,3 +39,11 @@ def load_image_location(name):
         sys.exit()
     image = pygame.image.load(fullname)
     return image
+
+def load_image_safe(name):
+    fullname = os.path.join('safe', name)
+    if not os.path.isfile(fullname):
+        print(f"Файл с изображением '{fullname}' не найден")
+        sys.exit()
+    image = pygame.image.load(fullname)
+    return image
