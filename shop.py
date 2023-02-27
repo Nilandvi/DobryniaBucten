@@ -7,6 +7,7 @@ from shop_price import *
 from load_image import *
 from tranzaction import *
 
+
 # Определение цветов
 def run_shop():
     BLACK = (0, 0, 0)
