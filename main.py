@@ -213,6 +213,11 @@ while running:
 
     if flag1 or flag2 or flag3 or flag4 or spin or shiz:
         s.play(1, 0)
+        t = int(lines[30].rstrip()) + speed
+        lines[30] = lines[30].replace(lines[30], str(t) + '\n')
+        with open('base.txt', 'w') as fi:
+            fi.writelines(lines)
+            fi.close()
     board.draw(screen)
     buttn.draw(screen)
     all_sprites.draw(screen)

@@ -83,8 +83,11 @@ class Board:
                             lstx.remove(ix + 1)
                             lsty.remove(iy + 1)
                             wod = int(lines[2])
+                            kek = int(lines[20].rstrip()) + 1
                             wod += random.randrange(10, 20)
                             lines[2] = lines[2].replace(lines[2], str(wod) + '\n')
+                            lines[22] = lines[22].replace(lines[22], str(wod) + '\n')
+                            lines[20] = lines[20].replace(lines[20], str(kek) + '\n')
                             with open('base.txt', 'w') as fi:
                                 fi.writelines(lines)
                                 fi.close()
@@ -101,7 +104,10 @@ class Board:
                                     lsty.remove(iy + 1)
                                     wod = int(lines[6])
                                     wod += random.randrange(10, 20)
+                                    kek = int(lines[20].rstrip()) + 1
                                     lines[6] = lines[6].replace(lines[6], str(wod) + '\n')
+                                    lines[26] = lines[26].replace(lines[26], str(wod) + '\n')
+                                    lines[20] = lines[20].replace(lines[20], str(kek) + '\n')
                                     with open('base.txt', 'w') as fi:
                                         fi.writelines(lines)
                                         fi.close()
@@ -118,6 +124,9 @@ class Board:
                             lsty.remove(iy + 1)
                             wod = int(lines[4])
                             wod += random.randrange(10, 20)
+                            kek = int(lines[20].rstrip()) + 1
+                            lines[24] = lines[24].replace(lines[24], str(wod) + '\n')
+                            lines[20] = lines[20].replace(lines[20], str(kek) + '\n')
                             lines[4] = lines[4].replace(lines[4], str(wod) + '\n')
                             with open('base.txt', 'w') as fi:
                                 fi.writelines(lines)
