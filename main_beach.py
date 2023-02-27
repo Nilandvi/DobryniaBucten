@@ -4,7 +4,7 @@ from res import *
 from load_image import *
 from Boardd import Board
 from button import Buttn
-
+from test_from_options import run_options
 
 def location_beach():
     lstx = []
@@ -115,8 +115,7 @@ def location_beach():
                     with open('base.txt', 'w') as fi:
                         fi.writelines(lines)
                         fi.close()
-                    import test_from_options
-                    exit()
+                    run_options()
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:

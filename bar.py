@@ -5,10 +5,12 @@ from maps import bar
 from character import *
 from ban import *
 import os
+from test_from_options import run_options
+
+
 def run_bar():
     global left, right, up, down
     bg = pygame.image.load("locations\\bar.png")
-    screen = sc = pygame.display.set_mode((1280, 640))
     screen.blit(bg, (0, 0))
     entities = pygame.sprite.Group() # Все объекты
     platforms = [] # то, во что мы будем врезаться или опираться
@@ -47,8 +49,7 @@ def run_bar():
                     with open('base.txt', 'w') as fi:
                         fi.writelines(lines)
                         fi.close()
-                    import test_from_options
-                    exit()
+                    run_options()
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
                     left = False

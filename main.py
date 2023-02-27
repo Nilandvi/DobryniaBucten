@@ -1,5 +1,6 @@
 from main_cave import location_cave
 from main_beach import location_beach
+from test_from_options import run_options
 from shop import run_shop
 from settings import *
 from res import *
@@ -128,8 +129,7 @@ while running:
                 with open('base.txt', 'w') as fi:
                     fi.writelines(lines)
                     fi.close()
-                import test_from_options
-                exit()
+                run_options()
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:

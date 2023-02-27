@@ -4,7 +4,7 @@ Wood:
 Rock:
 2737
 Clay:
-4918
+4937
 Money:
 2955
 
@@ -18,20 +18,20 @@ BoostGirs:
 
 --Static
 Objects:
-0
+1
 Wood:
 0
 Rock:
 0
 Clay:
-0
+4937
 Money:
 0
 Distance:
-0
+13168
 Coctails:
 0
 volume:
-0.1
+0.5
 locations:
-1
+4
