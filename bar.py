@@ -8,8 +8,7 @@ import os
 from test_from_options import run_options
 
 
-def run_bar():
-    global left, right, up, down
+def run_bar(left, right, up, down):
     bg = pygame.image.load("locations\\bar.png")
     screen.blit(bg, (0, 0))
     entities = pygame.sprite.Group() # Все объекты
@@ -17,6 +16,8 @@ def run_bar():
     entities.add(hero)
     index = 0
     pygame.mixer.music.load("sounds\\ost.mp3")
+    hero.rect.x = 400
+    hero.rect.y = 300
 
     for y in range(len(bar)):
         for x in range(len(bar[y])):
@@ -26,38 +27,37 @@ def run_bar():
                     platforms.append(pf)
     pygame.mixer.music.play()
     pygame.mixer.music.set_volume(float(lines[34]))
-
-    runGame = True
-    while runGame:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: runGame = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
+    running = True
+    while running:
+        for events in pygame.event.get():
+            if events.type == pygame.QUIT: running = False
+            elif events.type == pygame.KEYDOWN:
+                if events.key == pygame.K_a:
                     left = True
                     index = 8
-                if event.key == pygame.K_d:
+                if events.key == pygame.K_d:
                     right = True
                     index = 12
-                if event.key == pygame.K_w:
+                if events.key == pygame.K_w:
                     up = True
                     index = 4
-                if event.key == pygame.K_s:
+                if events.key == pygame.K_s:
                     down = True
                     index = 0
-                if event.key == pygame.K_ESCAPE:
+                if events.key == pygame.K_ESCAPE:
                     lines[36] = '4'
                     with open('base.txt', 'w') as fi:
                         fi.writelines(lines)
                         fi.close()
                     run_options()
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_a:
+            elif events.type == pygame.KEYUP:
+                if events.key == pygame.K_a:
                     left = False
-                if event.key == pygame.K_d:
+                if events.key == pygame.K_d:
                     right = False
-                if event.key == pygame.K_w:
+                if events.key == pygame.K_w:
                     up = False
-                if event.key == pygame.K_s:
+                if events.key == pygame.K_s:
                     down = False
         s = pygame.mixer.Sound('sounds\\shag.ogg')
         s.set_volume(0.35)
@@ -97,12 +97,11 @@ def run_bar():
             up = False
             right = False
             left = False
-            return
+            break
         elif 715 <= hero.rect.x <= 894 and 205 <= hero.rect.y <= 251:
             pygame.mixer.music.stop()
             s.stop()
             import minigame
-            exit()
         pg.display.update()
         clock.tick(30)
-
+    return

@@ -12,6 +12,7 @@ from Boardd import Board
 from button import Buttn
 from shop_on_main import Shop
 from bar import run_bar
+from character import *
 
 lstx = []
 index = 0
@@ -250,7 +251,7 @@ while running:
         board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'test__tree2.png', 30, 17)
     elif 515 <= a.rect.x <= 573 and 110 <= a.rect.y <= 150:
         if lines[14] == '3' + '\n' or lines[14] == '4' + '\n':
-            run_bar()
+            run_bar(left, right, up, down)
             a.rect.x = 524
             a.rect.y = 200
             flag1 = False
