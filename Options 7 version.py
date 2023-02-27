@@ -11,7 +11,7 @@ bg = pygame.image.load("img\\nastroiki1.png")
 screen.blit(bg, (0, 0))
 
 volumes = 0.5
-musics = ["sche.wav", "dwij.wav", "uk004.wav"]
+musics = ["sounds\\sche.wav", "sounds\\dwij.wav", "sounds\\uk004.wav"]
 click = pygame.mixer.Sound(musics[0])
 wake = pygame.mixer.Sound(musics[1])
 visg = pygame.mixer.Sound(musics[2])
