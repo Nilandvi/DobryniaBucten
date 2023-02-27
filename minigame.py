@@ -1,5 +1,4 @@
 import pygame
-
 from settings import *
 from design import *
 from res import res_count
@@ -59,18 +58,18 @@ def draw():
             pygame.draw.rect(screen, colors[i], (20, 540 - 66 * i, 70, 66))
         else:
             pass
-            #звук разливайки
+    pygame.draw.rect(screen, (66,203,29), (20, 206, 70, 402), 5)        #звук разливайки
 
 
-def draw_rec():
-    pygame.draw.rect(screen, (66,203,29), (20, 206, 70, 402), 5)
+
 
 
 running = True
 while running:
     events = pygame.event.get()
     for event in pygame.event.get():
-        draw_rec()
+        draw()
+
         if event.type == pygame.QUIT: 
             running = False
         elif event.type == pygame.MOUSEMOTION:
@@ -84,5 +83,6 @@ while running:
         pygame_widgets.update(events)
         pg.display.update()
         pygame.display.flip()
+        screen.blit(bg, (0,0))
 
 pygame.quit()
