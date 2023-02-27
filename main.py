@@ -1,3 +1,4 @@
+from main_cave import location_cave
 from settings import *
 from res import *
 from load_image import *
@@ -73,6 +74,9 @@ shiz = False
 pygame.mixer.music.load('sounds\\ost1.mp3')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(float(lines[34]))
+board.set_backgorund('test_grass4.png')
+s = pygame.mixer.Sound('sounds\\sshag.ogg')
+s.set_volume(0.35)
 
 while running:
     for event in pygame.event.get():
@@ -140,9 +144,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             board.f += 1
             board.rubit(dobrinya, lstx, lsty, tree_sprites, lines, event.pos, 0)
-            with open('base.txt', 'r') as f:
-                l = f.readlines()
-            res_count(screen, l)
+            res_count(screen, lines)
     inn = h.hohome()
     for i in home.sprites():
         i.image = h.images[inn]
@@ -205,11 +207,10 @@ while running:
         index += 1
         if index >= 12:
             index = 10
-    s = pygame.mixer.Sound('sounds\\sshag.ogg')
-    s.set_volume(0.35)
+
     if flag1 or flag2 or flag3 or flag4 or spin or shiz:
         s.play(1, 0)
-    board.rerender(screen, 'test_grass4.png')
+    board.draw(screen)
     buttn.draw(screen)
     all_sprites.draw(screen)
     tree_sprites.draw(screen)
@@ -218,8 +219,15 @@ while running:
     shop1.draw(screen)
     res_count(screen, lines)
     if a.rect.x <= 80 and a.rect.y <= 121:
-        import main_cave
-        exit()
+        location_cave()
+        a.rect.x = 524
+        a.rect.y = 200
+        flag1 = False
+        flag2 = False
+        flag3 = False
+        flag4 = False
+        spin = False
+        shiz = False
     elif a.rect.x >= 1230 and a.rect.y <= 121:
         import main_beach
         sys.exit()

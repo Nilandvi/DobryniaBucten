@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ff706cae-bacd-48f4-acfc-85359c9571a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bar.py" beforeDir="false" afterPath="$PROJECT_DIR$/bar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base.txt" beforeDir="false" afterPath="$PROJECT_DIR$/base.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design.py" beforeDir="false" afterPath="$PROJECT_DIR$/design.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minigame.py" beforeDir="false" afterPath="$PROJECT_DIR$/minigame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,13 +31,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/PycharmProjects/pygame"
   }
-}</component>
-  <component name="RunManager" selected="Python.minigame">
+}]]></component>
+  <component name="RunManager" selected="Python.main">
     <configuration name="bar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DobryniaBucten" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -125,7 +123,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="zwuk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DobryniaBucten" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -137,7 +135,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/zwuk.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,19 +148,19 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.shop" />
       <item itemvalue="Python.shop_price" />
+      <item itemvalue="Python.start" />
       <item itemvalue="Python.minigame" />
       <item itemvalue="Python.main_cave" />
       <item itemvalue="Python.bar" />
       <item itemvalue="Python.main_beach" />
-      <item itemvalue="Python.zwuk" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.start" />
         <item itemvalue="Python.minigame" />
         <item itemvalue="Python.bar" />
         <item itemvalue="Python.main_beach" />
         <item itemvalue="Python.main_cave" />
-        <item itemvalue="Python.zwuk" />
       </list>
     </recent_temporary>
   </component>
