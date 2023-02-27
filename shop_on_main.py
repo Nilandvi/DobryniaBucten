@@ -9,5 +9,5 @@ class Shop(pygame.sprite.Sprite):
         self.images = []
         self.image = dob
         self.rect = self.image.get_rect()
-        self.rect.x = 752
+        self.rect.x = 690
         self.rect.y = 1

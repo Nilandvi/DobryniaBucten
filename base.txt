@@ -1,10 +1,10 @@
 --Resourses
 Wood:
-5238
+5312
 Rock:
-2713
+2737
 Clay:
-4830
+4918
 Money:
 2955
 
