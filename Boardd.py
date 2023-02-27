@@ -3,6 +3,7 @@ import random
 from load_image import *
 from res import *
 
+
 class Board:
     def __init__(self, width, height):
         self.width = width
@@ -12,6 +13,7 @@ class Board:
         self.top = 0
         self.cell_size = 32
         self.f = 0
+        self.background = None
 
     def set_view(self, left, top, cell_size):
         self.left = left
@@ -44,9 +46,12 @@ class Board:
                 tree.rect.x = 32 * (x - 1)
                 tree.rect.y = 32 * (y - 1)
 
-    def rerender(self, src, name):
-        phone = load_image_location(name).convert_alpha()
-        src.blit(phone, (0, 0))
+    def draw(self, src):
+        if self.background:
+            src.blit(self.background, (0, 0))
+
+    def set_backgorund(self, name):
+        self.background = load_image_location(name).convert_alpha()
 
     def rubit(self, dobrinya, lstx, lsty, tree_sprites, lines, event, flag):
         self.aa = 0
