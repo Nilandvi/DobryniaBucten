@@ -43,7 +43,7 @@ def rurun():
                     if pos[0] <= pygame.mouse.get_pos()[0] <= pos[0] + 100 and pos[1] <= pygame.mouse.get_pos()[1] <= pos[1] + 100:
                         # If the button is the "Enter" button, check the password
                         if button_digits[i] == "Enter":
-                            if password == "9056":
+                            if password == "5052":
                                 password = ""
                                 print("Пароль верный, теперь напиши переход на катсцену")
                                 #звук хороший
