@@ -45,7 +45,6 @@ def rurun():
                         if button_digits[i] == "Enter":
                             if password == "5052":
                                 password = ""
-                                print("Пароль верный, теперь напиши переход на катсцену")
                                 #звук хороший
                                 titry()
                                 return
