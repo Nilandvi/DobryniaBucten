@@ -28,7 +28,7 @@ Clay:
 Money:
 0
 Distance:
-77039
+81919
 Coctails:
 0
 volume:

@@ -6,6 +6,7 @@ from Boardd import Board
 from button import Buttn
 from test_from_options import run_options
 from chestt import Chest
+from pin import rurun
 
 def location_beach():
     lstx = []
@@ -138,6 +139,11 @@ def location_beach():
                 with open('base.txt', 'r') as f:
                     l = f.readlines()
                 res_count(screen, l)
+                x, y = event.pos
+                if 1200 <= x <= 1240 and 200 <= y <= 240:
+                    pygame.mixer.music.stop()
+                    rurun()
+                    return
         if spin:
             if a.update5(border4):
                 a.image = a.images[index]
