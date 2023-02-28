@@ -26,13 +26,16 @@ playbtn = Button(
     radius=20, # скругление кнопки
     onClick=lambda: shot()) #функция когда кнопка нажата
 
+
 def generate_random_numbers(n, limit):
     random_numbers = []
     for _ in range(n):
         random_numbers.append(random.randint(0, limit))
     return random_numbers
 
+
 random_numbers = generate_random_numbers(6, 50)
+
 
 def shot():
     global random_numbers
@@ -59,9 +62,6 @@ def draw():
         else:
             pass
     pygame.draw.rect(screen, (66,203,29), (20, 206, 70, 402), 5)        #звук разливайки
-
-
-
 
 
 running = True

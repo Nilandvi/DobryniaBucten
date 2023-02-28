@@ -5,6 +5,7 @@ from load_image import *
 from Boardd import Board
 from button import Buttn
 from test_from_options import run_options
+from chestt import Chest
 
 def location_beach():
     lstx = []
@@ -23,7 +24,7 @@ def location_beach():
     dobrinya = pygame.sprite.Group()
     b = pygame.sprite.Group()
     buttn = pygame.sprite.Group()
-
+    chemodan = pygame.sprite.Group()
 
     class Border(pygame.sprite.Sprite):
         def __init__(self, x1, y1, x2, y2, name):
@@ -45,6 +46,7 @@ def location_beach():
     clock = pygame.time.Clock()
     a = Hodit(dobrinya)
     k = Buttn(1, 1280 - 100, 300, buttn)
+    ches = Chest(chemodan)
 
     running = True
     board.random_spawn_trees(50,  lstx, lsty, tree_sprites, 'clay_test2.png', 30, 12)
@@ -201,6 +203,8 @@ def location_beach():
         tree_sprites.draw(screen)
         dobrinya.draw(screen)
         res_count(screen, lines)
+        if lines[14] == '4' + '\n':
+            chemodan.draw(screen)
         if a.rect.x <= 80 and a.rect.y <= 40:
             pygame.mixer.music.stop()
             s.stop()
