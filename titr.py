@@ -46,7 +46,7 @@ while current_message < len(messages):
         screen.blit(text_surface, (x, y))
         pygame.display.update()
         # Задержка перед выводом следующей буквы
-        time.sleep(0.01)
+        time.sleep(0.05)
     # Перейти на новую строку
     y += font.size(line)[1]
     current_message += 1

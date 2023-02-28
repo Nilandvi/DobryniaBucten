@@ -54,20 +54,20 @@ class InfoTable:
         screen.blit(self.result, (1200, 120))
         screen.blit(self.title_font.render(self.count, True, self.title_color), (1232, 180))
         if self.flag == 1:
-            if lines[16][0] == "1" and  659 <= pygame.mouse.get_pos()[0] <= 724 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+            if lines[16][0] == "1" and  659 <= pygame.mouse.get_pos()[0] <= 724 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("Куплено", True, self.true_color), (980, 250))
-            elif lines[14][0] == "4" and 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+            elif lines[14][0] == "4" and 523 <= pygame.mouse.get_pos()[0] <= 584 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("Макс лвл", True, self.true_color), (980, 250))
-            elif lines[16][0] != "1"  and 659 <= pygame.mouse.get_pos()[0] <= 724 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+            elif lines[16][0] != "1"  and 659 <= pygame.mouse.get_pos()[0] <= 724 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("V Доступно", True, self.true_color), (980, 250))
-            elif lines[14][0] != "4" and 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+            elif lines[14][0] != "4" and 523 <= pygame.mouse.get_pos()[0] <= 584 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("V Доступно", True, self.true_color), (980, 250))
             else:
                 screen.blit(self.title_font.render("V Доступно", True, self.true_color), (980, 250))
         else:
-            if lines[16][0] == "1" and  659 <= pygame.mouse.get_pos()[0] <= 724 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+            if lines[16][0] == "1" and  659 <= pygame.mouse.get_pos()[0] <= 724 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("Куплено", True, self.true_color), (980, 250))
-            elif lines[14][0] == "4" and 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+            elif lines[14][0] == "4" and 523 <= pygame.mouse.get_pos()[0] <= 584 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("Макс лвл", True, self.true_color), (980, 250))
             else:
                 screen.blit(self.title_font.render("X Недоступно", True, self.wrong_color), (980, 250))

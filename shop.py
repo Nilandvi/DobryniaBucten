@@ -59,7 +59,7 @@ def run_shop():
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONUP:
-                if 523 <= pygame.mouse.get_pos()[0] <= 584 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+                if 523 <= pygame.mouse.get_pos()[0] <= 584 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                     if lines[14][0] == "1":
                         tranz("barup_lvl1")
                         #звук покупки
@@ -72,7 +72,7 @@ def run_shop():
                     elif lines[14][0] == "4":
                         pass
                         #звук ошибки
-                if 659 <= pygame.mouse.get_pos()[0] <= 724 and 224 <= pygame.mouse.get_pos()[1] <= 288:
+                if 659 <= pygame.mouse.get_pos()[0] <= 724 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                     if lines[16][0] == "0":
                         tranz("boost")
                         #звук покупки
@@ -94,20 +94,20 @@ def run_shop():
                     return
 
         if lines[14][0] == "1":
-            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar1.png'), (64, 64)), (523, 224))
+            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar1.png'), (64, 64)), (523, 150))
         if lines[14][0] == "2":
-            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar2.png'), (64, 64)), (523, 224))
+            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar2.png'), (64, 64)), (523, 150))
         if lines[14][0] == "3":
-            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar3.png'), (64, 64)), (523, 224))
+            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar3.png'), (64, 64)), (523, 150))
         if lines[14][0] == "4":
-            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar4.png'), (64, 64)), (523, 224))
-        screen.blit(pygame.transform.scale(pygame.image.load('shop\\speed.png'), (64, 64)), (659, 224))
-        screen.blit(pygame.transform.scale(pygame.image.load('shop\\oak.png'), (64, 64)), (511, 65))
+            screen.blit(pygame.transform.scale(pygame.image.load('shop\\bar4.png'), (64, 64)), (523, 150))
+        screen.blit(pygame.transform.scale(pygame.image.load('shop\\speed.png'), (64, 64)), (659, 150))
+        screen.blit(pygame.transform.scale(pygame.image.load('shop\\oak.png'), (64, 64)), (511, 56))
         screen.blit(pygame.transform.scale(pygame.image.load('shop\\rock.png'), (64, 64)), (625, 56))
         screen.blit(pygame.transform.scale(pygame.image.load('shop\\clay.png'), (64, 64)), (747, 56))
         bbar = "barup_lvl" + lines[14][0]
         abbar = "shop\\a_bar" + lines[14][0] + ".png"
-        regions = [(523, 224, bbar, abbar), (659, 224, 'boost', 'shop\\a_speed.png'), (511, 57, 'wood', 'shop\\a_oak.png'), (625, 56, 'stone', 'shop\\a_rock.png'), (747, 56, 'clay', 'shop\\a_clay.png')]
+        regions = [(523, 150, bbar, abbar), (659, 150, 'boost', 'shop\\a_speed.png'), (511, 48, 'wood', 'shop\\a_oak.png'), (625, 56, 'stone', 'shop\\a_rock.png'), (747, 56, 'clay', 'shop\\a_clay.png')]
 
         for region in regions:
             x, y, table_type, image_path = region
