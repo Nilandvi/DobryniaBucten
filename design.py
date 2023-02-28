@@ -15,4 +15,5 @@ slider5 = Slider(screen, 550, 470, 200, 40, min=0, max=50, step=1)
 output5 = TextBox(screen, 780, 470, 50, 50, fontSize=30)
 
 
+
 output.disable()

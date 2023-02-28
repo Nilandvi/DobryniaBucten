@@ -1,10 +1,10 @@
 --Resourses
 Wood:
-9999
+10096
 Rock:
-9999
+10014
 Clay:
-9999
+10033
 Money:
 9916
 
@@ -18,17 +18,17 @@ BoostGirs:
 
 --Static
 Objects:
-1
+10
 Wood:
-0
+10096
 Rock:
-0
+10014
 Clay:
-4937
+10033
 Money:
 0
 Distance:
-87647
+105615
 Coctails:
 0
 volume:

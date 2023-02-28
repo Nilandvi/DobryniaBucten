@@ -3,8 +3,8 @@ from settings import *
 from design import *
 from res import res_count
 
-
-
+outputs = [output, output1, output2, output3, output4, output5]
+sliders = [slider, slider1, slider2, slider3, slider4, slider5]
 
 def generate_random_numbers(n, limit):
     random_numbers = []
@@ -21,6 +21,7 @@ def draw():
         else:
             pass
     pygame.draw.rect(screen, (66,203,29), (20, 206, 70, 402), 5)        #звук разливайки
+    s2.play()
 
 def shot():
     global random_numbers
@@ -38,21 +39,22 @@ def shot():
                 fi.close()
             screen.blit(bg, (0, 0))
             random_numbers = generate_random_numbers(6, 50)
-            #Звук успеха
+            s.play()
         else:
-            pass #звук не тру
+            s3.play()
     else:
-        pass #звук отсутствия достаточного кол-ва ресов
+        s3.play()
 
 
 def run_minigame():
-    global outputs, sliders, colors, bg, random_numbers
+    global colors, bg, random_numbers, s, s2, s3
     random_numbers = generate_random_numbers(6, 50)
-    outputs = [output, output1, output2, output3, output4, output5]
-    sliders = [slider, slider1, slider2, slider3, slider4, slider5]
     colors = [(0, 255, 255), (32, 178, 170), (240, 230, 140), (0, 206, 209), (144, 238, 144), (128, 0, 0)]
     bg = pygame.image.load("locations\\bar_counter.png")
     screen.blit(bg, (0, 0))
+    s = pygame.mixer.Sound('sounds\\cash.ogg')
+    s2 = pygame.mixer.Sound('sounds\\beer.ogg')
+    s3 = pygame.mixer.Sound('sounds\\beer.ogg')
     font = pygame.font.Font(None, 100)
     flags = [0, 0, 0, 0, 0]
     playbtn = Button(

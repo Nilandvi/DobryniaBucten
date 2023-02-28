@@ -22,13 +22,13 @@ def drawing():
         screen.blit(btns[i], pos)
 
 def rurun():
-    textbox = TextBox(screen, 100, 20, 200, 50, fontSize=40, borderColour=(70, 130, 180), textColour=(64, 224, 208), radius=10,)
+    textbox = TextBox(screen, 100, 20, 200, 50, fontSize=40, borderColour=(70, 130, 180),
+                      textColour=(64, 224, 208), radius=10,)
     textbox.disable()
 
     drawing()
 
     password = ""
-
 
     button_digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "del", "0", "Enter"]
 
@@ -63,6 +63,6 @@ def rurun():
             password = ""
             drawing()
 
-        textbox.setText(password)
         pygame_widgets.update(pygame.event.get())
+        textbox.setText(password)
         pygame.display.update()

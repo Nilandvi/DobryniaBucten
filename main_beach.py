@@ -140,10 +140,12 @@ def location_beach():
                     l = f.readlines()
                 res_count(screen, l)
                 x, y = event.pos
-                if 1200 <= x <= 1240 and 200 <= y <= 240:
-                    pygame.mixer.music.stop()
-                    rurun()
-                    return
+                if lines[14] == '4' + '\n':
+                    chemodan.draw(screen)
+                    if 1200 <= x <= 1240 and 200 <= y <= 240:
+                        pygame.mixer.music.stop()
+                        rurun()
+                        return
         if spin:
             if a.update5(border4):
                 a.image = a.images[index]
