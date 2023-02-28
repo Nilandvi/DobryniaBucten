@@ -2,6 +2,7 @@ from settings import *
 from load_image import *
 from titr import titry
 
+font = pygame.font.SysFont('Comic Sans MS', 30)
 btns = [load_image_safe("1.png"), load_image_safe("2.png"), load_image_safe("3.png"), load_image_safe("4.png"),
         load_image_safe("5.png"), load_image_safe("6.png"), load_image_safe("7.png"), load_image_safe("8.png"),
         load_image_safe("9.png"), load_image_safe("del.png"), load_image_safe("0.png"), load_image_safe("enter.png")]
@@ -22,14 +23,10 @@ def drawing():
         screen.blit(btns[i], pos)
 
 def rurun():
-    textbox = TextBox(screen, 100, 20, 200, 50, fontSize=40, borderColour=(70, 130, 180),
-                      textColour=(64, 224, 208), radius=10,)
-    textbox.disable()
-
     drawing()
 
     password = ""
-
+    
     button_digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "del", "0", "Enter"]
 
     # Loop for handling events
@@ -62,7 +59,9 @@ def rurun():
         if len(password) == 5:
             password = ""
             drawing()
-
-        pygame_widgets.update(pygame.event.get())
-        textbox.setText(password)
+        
+        PASTEXT = font.render(password, True, (0, 191, 255))
+        screen.blit(PASTEXT, (170, 20))
+        pygame.draw.rect(screen, (72, 209, 204), (100, 20, 200, 50), 5)
         pygame.display.update()
+        pygame.display.flip()
