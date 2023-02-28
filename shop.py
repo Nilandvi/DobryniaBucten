@@ -88,6 +88,8 @@ def run_shop():
                 if 747 <= pygame.mouse.get_pos()[0] <= 811 and 56 <= pygame.mouse.get_pos()[1] <= 120:
                     tranz("clay")
                     #звук покупки
+                if 523 <= pygame.mouse.get_pos()[0] <= 587 and 250 <= pygame.mouse.get_pos()[1] <= 314:
+                    tranz("fruit")
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 if 1005 <= x <= 1045 and 101 <= y <= 135:
@@ -105,9 +107,10 @@ def run_shop():
         screen.blit(pygame.transform.scale(pygame.image.load('shop\\oak.png'), (64, 64)), (511, 56))
         screen.blit(pygame.transform.scale(pygame.image.load('shop\\rock.png'), (64, 64)), (625, 56))
         screen.blit(pygame.transform.scale(pygame.image.load('shop\\clay.png'), (64, 64)), (747, 56))
+        screen.blit(pygame.transform.scale(pygame.image.load('shop\\resour.png'), (64, 64)), (523, 250))
         bbar = "barup_lvl" + lines[14][0]
         abbar = "shop\\a_bar" + lines[14][0] + ".png"
-        regions = [(523, 150, bbar, abbar), (659, 150, 'boost', 'shop\\a_speed.png'), (511, 48, 'wood', 'shop\\a_oak.png'), (625, 56, 'stone', 'shop\\a_rock.png'), (747, 56, 'clay', 'shop\\a_clay.png')]
+        regions = [(523, 150, bbar, abbar), (659, 150, 'boost', 'shop\\a_speed.png'), (511, 48, 'wood', 'shop\\a_oak.png'), (625, 56, 'stone', 'shop\\a_rock.png'), (747, 56, 'clay', 'shop\\a_clay.png'), (523, 250, 'fruit', 'shop\\a_resour.png')]
 
         for region in regions:
             x, y, table_type, image_path = region

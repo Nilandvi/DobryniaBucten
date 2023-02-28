@@ -13,7 +13,7 @@ def res_count(screen, file):
     for i, resource in enumerate(resources):
         screen.blit(resource['image'], (resource['x'], 0))
         if i == 4:
-            text = font.render(file[41].strip(), True, color)
+            text = font.render(file[40].strip(), True, color)
         else:
             text = font.render(file[2 * i + 2].strip(), True, color)
         screen.blit(text, (35 + i * 100, 5))

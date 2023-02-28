@@ -24,5 +24,8 @@ lst = [
         'shop\\bar3.png'), "count": "1"},
     {"name": "barup_lvl4", "description": "Ты бизнесмен!", "price": ["MAX", "MAX", "MAX", "MAX"], 'image': pygame.image.load(
         'shop\\bar4.png'), "aimage": pygame.image.load('shop\\a_bar4.png'), "result": pygame.image.load(
-        'shop\\bar4.png'), "count": "1"}
+        'shop\\bar4.png'), "count": "1"},
+    {"name": "fruit", "description": "Отличная брага для бара!", "price": [0, 0, 0, 2], 'image': pygame.image.load(
+        'shop\\resour.png'), "aimage": pygame.image.load('shop\\a_resour.png'), "result": pygame.image.load(
+        'shop\\resour.png'), "count": "100"},
 ]

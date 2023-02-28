@@ -52,7 +52,7 @@ class InfoTable:
         screen.blit(info, info_rect)
         screen.blit(self.arrow, (1130, 150))
         screen.blit(self.result, (1200, 120))
-        screen.blit(self.title_font.render(self.count, True, self.title_color), (1232, 180))
+        screen.blit(self.title_font.render(self.count, True, self.title_color), (1200, 180))
         if self.flag == 1:
             if lines[16][0] == "1" and  659 <= pygame.mouse.get_pos()[0] <= 724 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                 screen.blit(self.title_font.render("Куплено", True, self.true_color), (980, 250))

@@ -19,10 +19,7 @@ def drawing():
         screen.blit(btns[i], pos)
 
 drawing()
-
 password = ""
-
-
 button_digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "del", "0", "Enter"]
 
 # Loop for handling events
@@ -37,10 +34,11 @@ while True:
                     # If the button is the "Enter" button, check the password
                     if button_digits[i] == "Enter":
                         if password == "9056":
+                            password = ""
                             print("Пароль верный, теперь напиши переход на катсцену")
                             #звук хороший
                         else:
-                            password = "Wrong!"
+                            password = ""
                             #звук ошибки
                             drawing()
                     if button_digits[i] == "del":
