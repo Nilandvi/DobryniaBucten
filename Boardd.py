@@ -104,7 +104,7 @@ class Board:
                                 (iy + 1 == yd // 32 + 3 or iy + 1 == yd // 32 + 2 or iy + 1 == yd // 32 or
                                  iy + 1 == yd // 32 + 1):
                                     sp.kill()
-                                    s2.play(1)
+                                    s2.play()
                                     lstx.remove(ix + 1)
                                     lsty.remove(iy + 1)
                                     wod = int(lines[6])
@@ -125,7 +125,7 @@ class Board:
                                 (iy + 1 == yd // 32 + 3 or iy + 1 == yd // 32 + 2 or iy + 1 == yd // 32 or
                                  iy + 1 == yd // 32 + 1):
                             sp.kill()
-                            s3.play(1)
+                            s3.play()
                             lstx.remove(ix + 1)
                             lsty.remove(iy + 1)
                             wod = int(lines[4])

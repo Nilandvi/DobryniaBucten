@@ -6,6 +6,8 @@ def titry():
     meters = int(lines[30].strip()) // 45
     font = pygame.font.SysFont('Comic Sans MS', 30)
     screen.fill((0, 0, 0))
+    pygame.mixer.music.load('sounds\\final.mp3')
+    pygame.mixer.music.play(-1)
 
     messages = [
         "Добрыня. Так много в этом слове...",
