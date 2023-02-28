@@ -204,6 +204,8 @@ def location_beach():
         if a.rect.x <= 80 and a.rect.y <= 40:
             pygame.mixer.music.stop()
             s.stop()
+            pygame.mixer.music.load('sounds\\ost1.mp3')
+            pygame.mixer.music.play(-1)
             break
         elif a.rect.x >= 1280 - 100 and a.rect.y >= 300:
             board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'clay_test2.png', 30, 12)

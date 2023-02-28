@@ -1,3 +1,5 @@
+
+
 from settings import *
 from load_image import *
 from dobrynia import Hodit
@@ -203,6 +205,8 @@ def location_cave():
         if a.rect.x >= WIDTH - 140 and a.rect.y <= 50:
             pygame.mixer.music.stop()
             s.stop()
+            pygame.mixer.music.load('sounds\\ost1.mp3')
+            pygame.mixer.music.play(-1)
             break
         elif a.rect.x >= 1280 - 120 and a.rect.y >= 680 - 128:
             board.random_spawn_trees(1, lstx, lsty, tree_sprites, 'rock_.png', 30, 17)
