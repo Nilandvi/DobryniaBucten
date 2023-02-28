@@ -6,7 +6,7 @@ Rock:
 Clay:
 9999
 Money:
-9911
+9916
 
 --Events
 Cutscene:
@@ -28,7 +28,7 @@ Clay:
 Money:
 0
 Distance:
-77039
+79263
 Coctails:
 0
 volume:
@@ -38,4 +38,4 @@ locations:
 0
 
 Fruits:
-13799
+0
