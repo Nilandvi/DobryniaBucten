@@ -1,6 +1,8 @@
 from settings import *
+from Options_7_version import run_opt
 
 bg = pygame.image.load("img\\menu.png")
+screen = pygame.display.set_mode((1280, 680))
 screen.blit(bg, (0, 0))
 pygame.display.set_caption('Dobrynia Bucten')
 
@@ -35,7 +37,7 @@ settingsbtn = Button(
     hoverColour=(255, 215, 0),
     pressedColour=(255, 255, 0),
     radius=20,
-    onClick=lambda: print('Нажата кнопка настройки')
+    onClick=lambda: running_opt()
 )
 
 exitbtn = Button(
@@ -69,6 +71,13 @@ def playa():
     settingsbtn.hide()
     playbtn.hide()
     import start
+    quit()
+
+def running_opt():
+    exitbtn.hide()
+    settingsbtn.hide()
+    playbtn.hide()
+    run_opt()
     quit()
 
 class Eye:
@@ -107,7 +116,7 @@ while running:
             run = False
             exit()
         elif event.type == pygame.MOUSEBUTTONUP:
-            print(pygame.mouse.get_pos())
+            pass
         elif event.type == pygame.MOUSEMOTION:
             for i in eye_lst:
                 i.update(event.pos)
@@ -115,7 +124,7 @@ while running:
     ##################################
     for i in eye_lst:
         i.draw(screen)
-    
+
     pygame_widgets.update(events)
     pygame.display.update()
     pygame.display.flip()
