@@ -6,7 +6,7 @@ Rock:
 Clay:
 9999
 Money:
-9911
+9916
 
 --Events
 Cutscene:
@@ -37,4 +37,4 @@ locations:
 10
 
 Fruits:
-13799
+0
