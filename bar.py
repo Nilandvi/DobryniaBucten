@@ -6,7 +6,7 @@ from character import *
 from ban import *
 import os
 from test_from_options import run_options
-
+from minigame import run_minigame
 
 def run_bar(left, right, up, down):
     bg = pygame.image.load("locations\\bar.png")
@@ -103,7 +103,13 @@ def run_bar(left, right, up, down):
         elif 715 <= hero.rect.x <= 894 and 205 <= hero.rect.y <= 251:
             pygame.mixer.music.stop()
             s.stop()
-            import minigame
+            hero.rect.x = 400
+            hero.rect.y = 300
+            run_minigame()
+            down = False
+            up = False
+            right = False
+            left = False
         pg.display.update()
         clock.tick(30)
     return

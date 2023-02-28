@@ -14,25 +14,5 @@ output4 = TextBox(screen, 780, 400, 50, 50, fontSize=30)
 slider5 = Slider(screen, 550, 470, 200, 40, min=0, max=50, step=1)
 output5 = TextBox(screen, 780, 470, 50, 50, fontSize=30)
 
-ex = Button(
-    screen, #слой на котором кнопка
-    10, # корда х
-    30, # корда у
-    50, # ширина кнопки
-    50, # высота кнопки
-    text='Х', # текст кнопки
-    textColour=(255, 255, 255), # цвет текста
-    fontSize=50, # размер шрифта
-    margin=20, # Минимальное расстояние между текстом / изображением и краем.
-    inactiveColour=(50, 205, 50), # цвет кнопки
-    hoverColour=(152, 251, 152), # цвет кнопки при наведении
-    pressedColour=(0, 255, 127), # цвет кнопки при нажатии
-    radius=20, # скругление кнопки
-    onClick=lambda: retur()) #функция когда кнопка нажата
-
-def retur():
-    os.system('start bar.py')
-    exit()
-
 
 output.disable()

@@ -28,13 +28,14 @@ Clay:
 Money:
 0
 Distance:
-82415
+87647
 Coctails:
 0
 volume:
 0.8
 locations:
 10
+
 
 Fruits:
 0
