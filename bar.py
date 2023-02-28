@@ -93,6 +93,8 @@ def run_bar(left, right, up, down):
         if 300 <= hero.rect.x <= 510 and 584 <= hero.rect.y <= 680:
             pygame.mixer.music.stop()
             s.stop()
+            pygame.mixer.music.load('sounds\\ost1.mp3')
+            pygame.mixer.music.play(-1)
             down = False
             up = False
             right = False
