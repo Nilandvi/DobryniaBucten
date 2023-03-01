@@ -23,6 +23,8 @@ def drawing():
         screen.blit(btns[i], pos)
 
 def rurun():
+    s = pygame.mixer.Sound('sounds\\cash.ogg')
+    s2 = pygame.mixer.Sound('sounds\\sche.wav')
     drawing()
 
     password = ""
@@ -38,11 +40,11 @@ def rurun():
                 # Check which button was clicked
                 for i, pos in enumerate(button_positions):
                     if pos[0] <= pygame.mouse.get_pos()[0] <= pos[0] + 100 and pos[1] <= pygame.mouse.get_pos()[1] <= pos[1] + 100:
-                        # If the button is the "Enter" button, check the password
+                        s2.play()
                         if button_digits[i] == "Enter":
                             if password == "5052":
                                 password = ""
-                                #звук хороший
+                                s.play()
                                 titry()
                                 return
 

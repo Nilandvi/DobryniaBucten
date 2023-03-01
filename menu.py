@@ -1,3 +1,5 @@
+import pygame
+
 from settings import *
 from Options_7_version import run_opt
 
@@ -5,6 +7,7 @@ bg = pygame.image.load("img\\menu.png")
 screen = pygame.display.set_mode((1280, 680))
 screen.blit(bg, (0, 0))
 pygame.display.set_caption('Dobrynia Bucten')
+s = pygame.mixer.Sound('sounds\\sche.wav')
 
 playbtn = Button(
     screen, #слой на котором кнопка
@@ -58,15 +61,16 @@ exitbtn = Button(
 )
 
 def exitt():
-    print("Нажата кнопка выхода")
+    s.play()
     exitbtn.hide()
     settingsbtn.hide()
     playbtn.hide()
+    pygame.mixer.music.stop()
     import exapp
     quit()
 
 def playa():
-    print("Нажата кнопка играть")
+    s.play()
     exitbtn.hide()
     settingsbtn.hide()
     playbtn.hide()
@@ -74,9 +78,11 @@ def playa():
     quit()
 
 def running_opt():
+    s.play()
     exitbtn.hide()
     settingsbtn.hide()
     playbtn.hide()
+    pygame.mixer.music.stop()
     run_opt()
     quit()
 
@@ -105,7 +111,8 @@ class Eye:
 eye_lst = []
 eye_lst.append(Eye((923, 540), 45))
 eye_lst.append(Eye((1081, 540), 45))
-
+pygame.mixer.music.load('sounds\\load.mp3')
+pygame.mixer.music.play(-1)
 
 running = True
 while running:

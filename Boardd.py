@@ -55,6 +55,7 @@ class Board:
 
     def rubit(self, dobrinya, lstx, lsty, tree_sprites, lines, event, flag):
         self.aa = 0
+        s = pygame.mixer.Sound('sounds\\woodkill.mp3.ogg')
         s2 = pygame.mixer.Sound('sounds\\sandkill.mp3.ogg')
         s3 = pygame.mixer.Sound('sounds\\rockkill.mp3.ogg')
         s2.set_volume(0.5)
@@ -83,6 +84,7 @@ class Board:
                         if (ix == xd // 32 + 1 or ix == xd // 32 + 2 or ix == xd // 32 + 3 or
                             ix == xd // 32 - 1 or ix == xd // 32 - 2 or ix == xd // 32 - 3 or ix == xd // 32 + 2) \
                                 and (iy == yd // 32 or iy == yd // 32 - 1):
+                            s.play()
                             sp.kill()
                             lstx.remove(ix + 1)
                             lsty.remove(iy + 1)

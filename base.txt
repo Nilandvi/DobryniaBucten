@@ -1,12 +1,12 @@
 --Resourses
 Wood:
-10096
+9000
 Rock:
-10273
+8373
 Clay:
-10033
+9733
 Money:
-9916
+88
 
 --Events
 Cutscene:
@@ -18,9 +18,9 @@ BoostGirs:
 
 --Static
 Objects:
-30
+38
 Wood:
-10096
+10235
 Rock:
 10273
 Clay:
@@ -28,7 +28,7 @@ Clay:
 Money:
 0
 Distance:
-107775
+126575
 Coctails:
 0
 volume:
@@ -38,4 +38,4 @@ locations:
 
 
 Fruits:
-0
+2560
