@@ -21,7 +21,6 @@ def draw():
         else:
             pass
     pygame.draw.rect(screen, (66,203,29), (20, 206, 70, 402), 5)        #звук разливайки
-    s2.play()
 
 def shot():
     global random_numbers
@@ -39,6 +38,7 @@ def shot():
                 fi.close()
             screen.blit(bg, (0, 0))
             random_numbers = generate_random_numbers(6, 50)
+            s2.play()
             s.play()
         else:
             s3.play()
@@ -53,8 +53,11 @@ def run_minigame():
     bg = pygame.image.load("locations\\bar_counter.png")
     screen.blit(bg, (0, 0))
     s = pygame.mixer.Sound('sounds\\cash.ogg')
+    s.set_volume(0.35)
     s2 = pygame.mixer.Sound('sounds\\beer.ogg')
-    s3 = pygame.mixer.Sound('sounds\\beer.ogg')
+    s3 = pygame.mixer.Sound('sounds\\error.ogg')
+    s2.set_volume(0.35)
+    s3.set_volume(0.35)
     font = pygame.font.Font(None, 100)
     flags = [0, 0, 0, 0, 0]
     playbtn = Button(

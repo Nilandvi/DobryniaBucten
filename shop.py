@@ -29,7 +29,8 @@ def run_shop():
     ]
     x = 20
     y = 500
-
+    s2 = pygame.mixer.Sound('sounds\\cash.ogg')
+    s3 = pygame.mixer.Sound('sounds\\error.ogg')
     while messages:
         for event in pygame.event.get():
             pass
@@ -52,6 +53,8 @@ def run_shop():
         pygame.display.update()
         time.sleep(1)
     # Основной игровой цикл
+    pygame.mixer.music.load('sounds\\shop.mp3')
+    pygame.mixer.music.play(-1)
     while True:
         res_count(screen, lines)
         for event in pygame.event.get():
@@ -62,37 +65,51 @@ def run_shop():
                 if 523 <= pygame.mouse.get_pos()[0] <= 584 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                     if lines[14][0] == "1":
                         tranz("barup_lvl1")
-                        #звук покупки
+                        s2.play()
                     elif lines[14][0] == "2":
                         tranz("barup_lvl2")
-                        #звук покупки
+                        s2.play()
                     elif lines[14][0] == "3":
                         tranz("barup_lvl3")
-                        #звук покупки
+                        s2.play()
                     elif lines[14][0] == "4":
-                        pass
-                        #звук ошибки
+                        s3.play()
                 if 659 <= pygame.mouse.get_pos()[0] <= 724 and 150 <= pygame.mouse.get_pos()[1] <= 214:
                     if lines[16][0] == "0":
                         tranz("boost")
-                        #звук покупки
+                        s2.play()
                     else:
-                        pass
-                    #звук ошибки
+                        s3.play()
                 if 511 <= pygame.mouse.get_pos()[0] <= 575 and 56 <= pygame.mouse.get_pos()[1] <= 120:
                     tranz("wood")
-                    #звук покупки
+                    if int(lines[2].strip()) >= 100:
+                        s2.play()
+                    else:
+                        s3.play()
                 if 625 <= pygame.mouse.get_pos()[0] <= 689 and 56 <= pygame.mouse.get_pos()[1] <= 120:
                     tranz("stone")
-                    #звук покупки
+                    if int(lines[4].strip()) >= 100:
+                        s2.play()
+                    else:
+                        s3.play()
                 if 747 <= pygame.mouse.get_pos()[0] <= 811 and 56 <= pygame.mouse.get_pos()[1] <= 120:
                     tranz("clay")
-                    #звук покупки
+                    if int(lines[6].strip()) >= 100:
+                        s2.play()
+                    else:
+                        s3.play()
                 if 523 <= pygame.mouse.get_pos()[0] <= 587 and 250 <= pygame.mouse.get_pos()[1] <= 314:
                     tranz("fruit")
+                    if int(lines[40].strip()) >= 100:
+                        s2.play()
+                    else:
+                        s3.play()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 if 1005 <= x <= 1045 and 101 <= y <= 135:
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load('sounds\\ost1.mp3')
+                    pygame.mixer.music.play(-1)
                     return
 
         if lines[14][0] == "1":
